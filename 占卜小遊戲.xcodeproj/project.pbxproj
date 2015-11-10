@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA34630BBBE69D5EABC166B2 /* libPods-占卜小遊戲.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00995A19F62B07C6204FD49C /* libPods-占卜小遊戲.a */; };
 		DE20A8471BF06E7800B7D0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20A8461BF06E7800B7D0A3 /* AppDelegate.swift */; };
-		DE20A8491BF06E7800B7D0A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20A8481BF06E7800B7D0A3 /* ViewController.swift */; };
+		DE20A8491BF06E7800B7D0A3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20A8481BF06E7800B7D0A3 /* HomeViewController.swift */; };
 		DE20A84C1BF06E7800B7D0A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE20A84A1BF06E7800B7D0A3 /* Main.storyboard */; };
 		DE20A84E1BF06E7800B7D0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE20A84D1BF06E7800B7D0A3 /* Assets.xcassets */; };
 		DE20A8511BF06E7800B7D0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE20A84F1BF06E7800B7D0A3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00995A19F62B07C6204FD49C /* libPods-占卜小遊戲.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-占卜小遊戲.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB11784FB167C8998E4B2BC2 /* Pods-占卜小遊戲.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-占卜小遊戲.release.xcconfig"; path = "Pods/Target Support Files/Pods-占卜小遊戲/Pods-占卜小遊戲.release.xcconfig"; sourceTree = "<group>"; };
 		DE20A8431BF06E7800B7D0A3 /* 占卜小遊戲.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "占卜小遊戲.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE20A8461BF06E7800B7D0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE20A8481BF06E7800B7D0A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE20A8481BF06E7800B7D0A3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DE20A84B1BF06E7800B7D0A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE20A84D1BF06E7800B7D0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE20A8501BF06E7800B7D0A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE20A8521BF06E7800B7D0A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE8841C71BF242F500936610 /* 占卜小遊戲-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "占卜小遊戲-Bridging-Header.h"; sourceTree = "<group>"; };
+		DE8841C81BF242F600936610 /* ParseObjectC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseObjectC.h; sourceTree = "<group>"; };
+		FBBABB89E575536C85B6D614 /* Pods-占卜小遊戲.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-占卜小遊戲.debug.xcconfig"; path = "Pods/Target Support Files/Pods-占卜小遊戲/Pods-占卜小遊戲.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA34630BBBE69D5EABC166B2 /* libPods-占卜小遊戲.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85CA5CAD96B75A8285F198DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00995A19F62B07C6204FD49C /* libPods-占卜小遊戲.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DE20A83A1BF06E7800B7D0A3 = {
 			isa = PBXGroup;
 			children = (
 				DE20A8451BF06E7800B7D0A3 /* 占卜小遊戲 */,
 				DE20A8441BF06E7800B7D0A3 /* Products */,
+				DEB370AE3FF7FD616BB8726C /* Pods */,
+				85CA5CAD96B75A8285F198DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +72,24 @@
 			isa = PBXGroup;
 			children = (
 				DE20A8461BF06E7800B7D0A3 /* AppDelegate.swift */,
-				DE20A8481BF06E7800B7D0A3 /* ViewController.swift */,
+				DE20A8481BF06E7800B7D0A3 /* HomeViewController.swift */,
 				DE20A84A1BF06E7800B7D0A3 /* Main.storyboard */,
 				DE20A84D1BF06E7800B7D0A3 /* Assets.xcassets */,
 				DE20A84F1BF06E7800B7D0A3 /* LaunchScreen.storyboard */,
 				DE20A8521BF06E7800B7D0A3 /* Info.plist */,
+				DE8841C81BF242F600936610 /* ParseObjectC.h */,
+				DE8841C71BF242F500936610 /* 占卜小遊戲-Bridging-Header.h */,
 			);
 			path = "占卜小遊戲";
+			sourceTree = "<group>";
+		};
+		DEB370AE3FF7FD616BB8726C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBBABB89E575536C85B6D614 /* Pods-占卜小遊戲.debug.xcconfig */,
+				BB11784FB167C8998E4B2BC2 /* Pods-占卜小遊戲.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +99,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE20A8551BF06E7800B7D0A3 /* Build configuration list for PBXNativeTarget "占卜小遊戲" */;
 			buildPhases = (
+				F6C57DD0D029993F61E171E2 /* Check Pods Manifest.lock */,
 				DE20A83F1BF06E7800B7D0A3 /* Sources */,
 				DE20A8401BF06E7800B7D0A3 /* Frameworks */,
 				DE20A8411BF06E7800B7D0A3 /* Resources */,
+				7FA32603914DD8CA01D435CE /* Embed Pods Frameworks */,
+				4CD8F74F089B3BE2A3E8CCE1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -90,6 +121,7 @@
 		DE20A83B1BF06E7800B7D0A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "鄭涵嚴";
 				TargetAttributes = {
@@ -129,12 +161,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4CD8F74F089B3BE2A3E8CCE1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-占卜小遊戲/Pods-占卜小遊戲-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FA32603914DD8CA01D435CE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-占卜小遊戲/Pods-占卜小遊戲-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6C57DD0D029993F61E171E2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE20A83F1BF06E7800B7D0A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE20A8491BF06E7800B7D0A3 /* ViewController.swift in Sources */,
+				DE20A8491BF06E7800B7D0A3 /* HomeViewController.swift in Sources */,
 				DE20A8471BF06E7800B7D0A3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,23 +324,30 @@
 		};
 		DE20A8561BF06E7800B7D0A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBBABB89E575536C85B6D614 /* Pods-占卜小遊戲.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "占卜小遊戲/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "AC.-----";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "占卜小遊戲/占卜小遊戲-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		DE20A8571BF06E7800B7D0A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB11784FB167C8998E4B2BC2 /* Pods-占卜小遊戲.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "占卜小遊戲/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "AC.-----";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "占卜小遊戲/占卜小遊戲-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -283,6 +370,7 @@
 				DE20A8571BF06E7800B7D0A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
