@@ -9,51 +9,101 @@
 import UIKit
 
 class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
-//    var horoscopeArray = ["2","2"];
     @IBOutlet weak var myPicker: UIPickerView!;
-    var pickerData = [String]();
+    var pickerAppeData = [RoleSetting]();
+    var pickerRoleData = [RoleSetting]();
+    var test = [String]();
     override func viewDidLoad() {
-        let qurey = PFQuery(className:"Appellation");
+        super.viewDidLoad()
+        let qureyAppellation = PFQuery(className:"Appellation");
+        getParseData(qureyAppellation,name:"adjective",battleValue:"value",numberCompient:0);
+        let qureyRole = PFQuery(className:"Role");
+        getParseData(qureyRole,name:"roleName",battleValue:"battleValue",numberCompient:1);
+        self.myPicker.reloadAllComponents();
 //        qurey.selectKeys(["adjective"]);
+        
+    }
+    
+    func getParseData(qurey:PFQuery,name nameProp:String,battleValue battleValueProp:String ,numberCompient number:Int){
         qurey.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, errors:NSError?) -> Void in
             for object in objects!{
-//                let adjective:NSString = object["adjective"] as! NSString;
-                self.pickerData.append(object["adjective"] as! String);
+                let roleSetting = RoleSetting.init(name: object[nameProp] as! String, valueProp: object[battleValueProp] as! Int);
+                if
+                    number == 1
+                {
+                    self.pickerRoleData.append(roleSetting)
+                }
+                else
+                {
+                 self.pickerAppeData.append(roleSetting);
+                }
+                
             };
             self.myPicker.reloadAllComponents();
-//            self.pickerView(self.myPicker, numberOfRowsInComponent: 0);
-//            let finalCount = self.pickerData.count - 1;
-//            for i in 0...finalCount
-//            {
-//            self.pickerView(self.myPicker, titleForRow:i, forComponent: 1)
-//            }
-//            self.myPicker.delegate = self;
-//            self.myPicker.dataSource = self;
-
+ 
         };
-        super.viewDidLoad()
-//        myPicker.dataSource = self
-//        myPicker.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
+    };
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+    
+    //protocol
+func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
         let returnValue:String ;
-        returnValue = pickerData[row];
+        if component == 1
+        {
+        returnValue = pickerRoleData[row].nameProperty;
+        }
+        else
+        {
+        returnValue = pickerAppeData[row].nameProperty;
+ 
+        }
         return returnValue;
 
     }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 2;
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 1
+        {
+            return pickerRoleData.count
+        }
+        else
+        {
+            return pickerAppeData.count
+        }
+        
     }
+func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        var pickerLabel = UILabel();
+        pickerLabel.textColor = UIColor.blackColor()
+        if
+            component == 1
+        {
+            pickerLabel.text = pickerRoleData[row].nameProperty
 
+        }
+        else
+        {
+            pickerLabel.text = pickerAppeData[row].nameProperty
+        }
+        // pickerLabel.font = UIFont(name: pickerLabel.font.fontName, size: 15)
+        pickerLabel.font = UIFont(name: "Arial-BoldMT", size: 15) // In this use your custom font
+        pickerLabel.textAlignment = NSTextAlignment.Center
+        return pickerLabel
+    }
 }
-
+class RoleSetting: NSObject {
+    let nameProperty:String
+    let valueProperty:Int
+    init(name:String,valueProp:Int){
+//        super.init();
+        nameProperty = name;
+        valueProperty = valueProp;
+    }
+}

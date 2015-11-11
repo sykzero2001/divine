@@ -84,8 +84,8 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRG-MS-tEg">
                                 <rect key="frame" x="0.0" y="287" width="252" height="216"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="AR9-sY-WBK" id="rU7-pI-ZXQ"/>
-                                    <outlet property="delegate" destination="AR9-sY-WBK" id="GAs-J5-j1r"/>
+                                    <outlet property="dataSource" destination="AR9-sY-WBK" id="4Kc-cX-f21"/>
+                                    <outlet property="delegate" destination="AR9-sY-WBK" id="aRu-GO-kQT"/>
                                 </connections>
                             </pickerView>
                         </subviews>
