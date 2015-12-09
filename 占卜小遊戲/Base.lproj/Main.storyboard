@@ -23,6 +23,23 @@
             </objects>
             <point key="canvasLocation" x="47" y="-176"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="rmv-tS-KLD">
+            <objects>
+                <navigationController id="fXo-rI-7WX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="0ry-Vn-Ea9"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7aO-Qh-Q5K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AR9-sY-WBK" kind="relationship" relationship="rootViewController" id="Fh1-hA-lJA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4g5-7w-FgR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-114" y="-909"/>
+        </scene>
         <!--占卜-->
         <scene sceneID="QoO-0X-TiZ">
             <objects>
@@ -36,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="你的今日幸運數字：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xu0-4D-9D4">
-                                <rect key="frame" x="46" y="46" width="153" height="21"/>
+                                <rect key="frame" x="46" y="70" width="153" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -65,24 +82,44 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bmw-Li-6Ow">
+                                <rect key="frame" x="200" y="101" width="38" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.22110162950000001" blue="0.28382873069999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQq-ep-b1c">
+                                <rect key="frame" x="46" y="222" width="60" height="30"/>
+                                <state key="normal" title="開始占卜"/>
+                                <connections>
+                                    <action selector="start:" destination="AR9-sY-WBK" eventType="touchUpInside" id="omq-ch-him"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXn-e2-ReP">
+                                <rect key="frame" x="200" y="70" width="38" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="戰力：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTj-7c-44t">
-                                <rect key="frame" x="406" y="158" width="51" height="21"/>
+                                <rect key="frame" x="46" y="193" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5z3-0z-ZPX">
-                                <rect key="frame" x="465" y="158" width="86" height="21"/>
+                                <rect key="frame" x="105" y="193" width="86" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bmw-Li-6Ow">
-                                <rect key="frame" x="200" y="101" width="38" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.22110162950000001" blue="0.28382873069999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ady-JA-Qf1">
+                                <rect key="frame" x="49" y="266" width="45" height="30"/>
+                                <state key="normal" title="決鬥場"/>
+                                <connections>
+                                    <action selector="goBattle:" destination="AR9-sY-WBK" eventType="touchUpInside" id="37i-Iw-WfI"/>
+                                </connections>
+                            </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRG-MS-tEg">
-                                <rect key="frame" x="0.0" y="287" width="252" height="216"/>
+                                <rect key="frame" x="8" y="327" width="252" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="AR9-sY-WBK" id="4Kc-cX-f21"/>
                                     <outlet property="delegate" destination="AR9-sY-WBK" id="aRu-GO-kQT"/>
@@ -92,13 +129,139 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="占卜" image="占卜首頁" id="iLx-aF-I0B"/>
+                    <navigationItem key="navigationItem" id="qP4-sr-uzz"/>
                     <connections>
+                        <outlet property="battleNum" destination="5z3-0z-ZPX" id="49p-fF-4MW"/>
+                        <outlet property="colorView" destination="Bmw-Li-6Ow" id="Nq8-zK-AZp"/>
+                        <outlet property="luckyNum" destination="tXn-e2-ReP" id="mU1-ot-89Q"/>
                         <outlet property="myPicker" destination="qRG-MS-tEg" id="Hhf-OA-kh5"/>
+                        <outlet property="phase" destination="iws-OC-ODz" id="Uk5-KM-wKk"/>
+                        <segue destination="cXw-di-By8" kind="push" identifier="battle" id="z7O-t8-lmL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bf5-ir-cwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47" y="-837"/>
+            <point key="canvasLocation" x="504" y="-903"/>
+        </scene>
+        <!--決鬥場-->
+        <scene sceneID="YtV-LR-CcO">
+            <objects>
+                <viewController storyboardIdentifier="BattleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cXw-di-By8" customClass="BattleViewController" customModule="占卜小遊戲" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QJT-1w-QC6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nj5-Gu-9Ut"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lrf-Kf-gb8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A22-sJ-mOH">
+                                <rect key="frame" x="45" y="167" width="232" height="168"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cXw-di-By8" id="Fdv-f0-QSG"/>
+                                    <outlet property="delegate" destination="cXw-di-By8" id="jUr-1a-XMf"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="防禦陣型選擇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bog-p7-uYP">
+                                <rect key="frame" x="45" y="86" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="戰力：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgM-C8-bSX">
+                                <rect key="frame" x="45" y="115" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79q-iT-5tl">
+                                <rect key="frame" x="96" y="115" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="相性：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cub-7e-zc7">
+                                <rect key="frame" x="45" y="139" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eah-bg-KdM">
+                                <rect key="frame" x="96" y="138" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgn-50-Cb4">
+                                <rect key="frame" x="63" y="343" width="90" height="30"/>
+                                <state key="normal" title="開始搜索敵人"/>
+                                <connections>
+                                    <action selector="searchEnemy:" destination="cXw-di-By8" eventType="touchUpInside" id="1cL-4r-qJY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="？？？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmI-gq-95n">
+                                <rect key="frame" x="20" y="381" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="角色名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-tp-MR1">
+                                <rect key="frame" x="85" y="381" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBU-K8-UiP">
+                                <rect key="frame" x="185" y="381" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="V.S." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af8-dO-uwp">
+                                <rect key="frame" x="111" y="419" width="30" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="形容詞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgY-R0-OKk">
+                                <rect key="frame" x="20" y="447" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="角色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDR-Ce-Kpn">
+                                <rect key="frame" x="127" y="447" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imU-rQ-4qo">
+                                <rect key="frame" x="72" y="482" width="60" height="30"/>
+                                <state key="normal" title="進入戰鬥"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="戰力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdX-ae-ka6">
+                                <rect key="frame" x="216" y="447" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="決鬥場" id="ejC-CB-w7T"/>
+                    <connections>
+                        <outlet property="defense" destination="A22-sJ-mOH" id="Lud-zt-v0R"/>
+                        <outlet property="defenseBattleValue" destination="79q-iT-5tl" id="6BM-fv-MvQ"/>
+                        <outlet property="defensePhase" destination="eah-bg-KdM" id="gAw-1q-N6h"/>
+                        <outlet property="enemyRole" destination="GQx-tp-MR1" id="FI4-4K-1H5"/>
+                        <outlet property="myAppe" destination="GgY-R0-OKk" id="MTh-uF-P3q"/>
+                        <outlet property="myBattleValue" destination="vdX-ae-ka6" id="OxH-oD-5QR"/>
+                        <outlet property="myRole" destination="sDR-Ce-Kpn" id="fAf-n3-798"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d5f-7g-UPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1235" y="-903"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GBx-VB-qXs">
@@ -110,7 +273,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="AR9-sY-WBK" kind="relationship" relationship="viewControllers" id="AMe-RC-QVV"/>
+                        <segue destination="fXo-rI-7WX" kind="relationship" relationship="viewControllers" id="D9r-fM-iX1"/>
                         <segue destination="dMg-yo-Uga" kind="relationship" relationship="viewControllers" id="oJA-Ea-tte"/>
                     </connections>
                 </tabBarController>

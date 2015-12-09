@@ -1,0 +1,122 @@
+//
+//  BattleViewController.swift
+//  占卜小遊戲
+//
+//  Created by 鄭涵嚴 on 2015/12/4.
+//  Copyright © 2015年 鄭涵嚴. All rights reserved.
+//
+
+import UIKit
+
+class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+    @IBOutlet weak var defenseBattleValue: UILabel!
+    @IBOutlet weak var defensePhase: UILabel!
+    @IBOutlet weak var defense: UIPickerView!
+    @IBOutlet weak var enemyRole: UILabel!
+    @IBOutlet weak var myAppe: UILabel!
+    @IBOutlet weak var myRole: UILabel!
+    @IBOutlet weak var myBattleValue: UILabel!
+    
+    var defenseAppeData = [RoleSetting]();
+    var defenseRoleData = [RoleSetting]();
+    var attackAppe = NSString();
+    var attackRole = NSString();
+    var attackValue = NSString();
+    let usrDefault = NSUserDefaults.standardUserDefaults()
+    var luckyNumber = 0;
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let defenseAppValue = usrDefault.objectForKey("defenseAppValue")
+        let defenseRoleValue = usrDefault.objectForKey("defenseRoleValue")
+        if
+           defenseAppValue != nil && defenseRoleValue != nil
+        {
+            
+            let battleData = HomeViewController.getBattleValue(defenseAppValue as! Int,roleCount:defenseRoleValue as! Int,lucknumber:luckyNumber,roleArray:defenseRoleData,appearray:defenseAppeData)
+            defensePhase.text = battleData.phase
+            defenseBattleValue.text = battleData.battleValue
+            defense.selectRow(defenseAppValue as! Int, inComponent:0, animated:false)
+            defense.selectRow(defenseRoleValue as! Int, inComponent:1, animated:false)
+        }
+        
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    @IBAction func searchEnemy(sender: UIButton) {
+        myAppe.text = attackAppe as String
+        myRole.text = attackRole as String
+        myBattleValue.text = attackValue as String
+    }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+    //protocol
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        let returnValue:String ;
+        if component == 1
+        {
+            returnValue = defenseRoleData[row].nameProperty;
+        }
+        else
+        {
+            returnValue = defenseAppeData[row].nameProperty;
+            
+        }
+        return returnValue;
+        
+    }
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 2;
+    }
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        usrDefault.setObject(defense.selectedRowInComponent(0), forKey: "defenseAppValue")
+        usrDefault.setObject(defense.selectedRowInComponent(1), forKey: "defenseRoleValue")
+        usrDefault.synchronize()
+        let battleData = HomeViewController.getBattleValue(defense.selectedRowInComponent(0),roleCount:defense.selectedRowInComponent(1),lucknumber:luckyNumber,roleArray:defenseRoleData,appearray:defenseAppeData)
+        defensePhase.text = battleData.phase
+        defenseBattleValue.text = battleData.battleValue
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 1
+        {
+            return defenseRoleData.count
+        }
+        else
+        {
+            return defenseAppeData.count
+        }
+        
+    }
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        let pickerLabel = UILabel();
+        pickerLabel.textColor = UIColor.blackColor()
+        if
+            component == 1
+        {
+            pickerLabel.text = defenseRoleData[row].nameProperty
+            
+        }
+        else
+        {
+            pickerLabel.text = defenseAppeData[row].nameProperty
+        }
+        // pickerLabel.font = UIFont(name: pickerLabel.font.fontName, size: 15)
+        pickerLabel.font = UIFont(name: "Arial-BoldMT", size: 15) // In this use your custom font
+        pickerLabel.textAlignment = NSTextAlignment.Center
+        return pickerLabel
+    }
+
+}
