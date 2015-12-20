@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <ParseFacebookUtilsV4.h>
+
 
 @interface ParseObjectC : NSObject
 

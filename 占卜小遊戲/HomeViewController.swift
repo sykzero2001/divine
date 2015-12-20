@@ -19,8 +19,15 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     var totalAppeData = [RoleSetting]();
     var totalRoleData = [RoleSetting]();
     var luckNumber = 0;
+    var attackBattleNum = 0
+    var loginStatus:String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentUser = PFUser.currentUser()
+        if currentUser == nil
+        {
+       login()
+        }
         let qureyAppellation = PFQuery(className:"Appellation");
         getParseData(qureyAppellation,name:"adjective",battleValue:"value",numberCompient:0);
         let qureyRole = PFQuery(className:"Role");
@@ -28,6 +35,27 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         self.myPicker.reloadAllComponents();
 //        qurey.selectKeys(["adjective"]);
         
+    }
+    override func viewDidAppear(animated: Bool) {
+        if
+            loginStatus == "NO"
+        {
+            let alertController = UIAlertController(title: "請先登入", message: "請先登入FaceBook帳號", preferredStyle: .Alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                NSLog("OK Pressed")
+            self.loginStatus = nil
+                self.login()
+            }
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            
+            // Present the controller
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     @IBAction func start(sender: UIButton) {
         //取得形容詞與角色
@@ -56,7 +84,8 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         //計算戰力
         let battleData = HomeViewController.getBattleValue(myPicker.selectedRowInComponent(0),roleCount:myPicker.selectedRowInComponent(1),lucknumber:luckNumber,roleArray:pickerRoleData,appearray:pickerAppeData)
         phase.text = battleData.phase
-        battleNum.text = battleData.battleValue
+        battleNum.text = String(abs(battleData.battleValue))
+        attackBattleNum = battleData.battleValue
         
     }
 
@@ -84,7 +113,29 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         };
 
     };
-   static func getBattleValue(appeCount:Int,roleCount:Int,lucknumber:Int,roleArray:[RoleSetting],appearray:[RoleSetting])->(phase:String,battleValue:String){
+    func login()  {
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile", "email", "user_friends"]) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    let gameScore = PFObject(className:"Rank")
+                    gameScore["score"]  = 0
+                    gameScore["user"] = user
+                    gameScore.saveEventually()
+                    print("User signed up and logged in through Facebook!")
+                }
+                else {
+                    print("User logged in through Facebook!")
+                }
+            self.loginStatus = "YES"
+            }
+            else {
+            self.loginStatus = "NO"
+            }
+        }
+       }
+
+   static func getBattleValue(appeCount:Int,roleCount:Int,lucknumber:Int,roleArray:[RoleSetting],appearray:[RoleSetting])->(phase:String,battleValue:Int){
 //        let appeCount = myPicker.selectedRowInComponent(0);
 //        let roleCount = myPicker.selectedRowInComponent(1);
 //        let lucknumber = Int(luckyNum.text!);
@@ -99,8 +150,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         {
             phase = "邪惡"
         }
-        let battleValue = String(abs(battlepValueNum))
-    return(phase,battleValue)
+        return(phase,battlepValueNum)
     }
 
     
@@ -117,7 +167,9 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             controller.luckyNumber = luckNumber;
             controller.attackAppe = pickerAppeData[myPicker.selectedRowInComponent(0)].nameProperty
             controller.attackRole = pickerRoleData[myPicker.selectedRowInComponent(1)].nameProperty
-            controller.attackValue = battleNum.text!
+            controller.attackValue = attackBattleNum
+            controller.randomAppeData = totalAppeData
+            controller.randomRoleData = totalRoleData
         }
     }
     
@@ -143,7 +195,8 @@ func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
 func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     let battleData = HomeViewController.getBattleValue(myPicker.selectedRowInComponent(0),roleCount:myPicker.selectedRowInComponent(1),lucknumber:luckNumber,roleArray:pickerRoleData,appearray:pickerAppeData)
     phase.text = battleData.phase
-    battleNum.text = battleData.battleValue
+    battleNum.text = String(abs(battleData.battleValue))
+    attackBattleNum = battleData.battleValue
     }
 func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 1

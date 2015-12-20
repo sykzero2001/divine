@@ -238,6 +238,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imU-rQ-4qo">
                                 <rect key="frame" x="72" y="482" width="60" height="30"/>
                                 <state key="normal" title="進入戰鬥"/>
+                                <connections>
+                                    <action selector="startFighting:" destination="cXw-di-By8" eventType="touchUpInside" id="cj8-O6-iGf"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="戰力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdX-ae-ka6">
                                 <rect key="frame" x="216" y="447" width="68" height="21"/>
@@ -253,15 +256,146 @@
                         <outlet property="defense" destination="A22-sJ-mOH" id="Lud-zt-v0R"/>
                         <outlet property="defenseBattleValue" destination="79q-iT-5tl" id="6BM-fv-MvQ"/>
                         <outlet property="defensePhase" destination="eah-bg-KdM" id="gAw-1q-N6h"/>
-                        <outlet property="enemyRole" destination="GQx-tp-MR1" id="FI4-4K-1H5"/>
+                        <outlet property="enemyPhase" destination="OBU-K8-UiP" id="tQP-vf-Vdo"/>
+                        <outlet property="enemyRoleLabel" destination="GQx-tp-MR1" id="THe-D9-3yx"/>
                         <outlet property="myAppe" destination="GgY-R0-OKk" id="MTh-uF-P3q"/>
                         <outlet property="myBattleValue" destination="vdX-ae-ka6" id="OxH-oD-5QR"/>
                         <outlet property="myRole" destination="sDR-Ce-Kpn" id="fAf-n3-798"/>
+                        <segue destination="JLR-uh-R1a" kind="presentation" identifier="fight" id="t3P-8M-Rzl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5f-7g-UPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1235" y="-903"/>
+        </scene>
+        <!--Fight View Controller-->
+        <scene sceneID="3Vu-CF-opC">
+            <objects>
+                <viewController id="JLR-uh-R1a" customClass="FightViewController" customModule="占卜小遊戲" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cs1-Fi-WxI"/>
+                        <viewControllerLayoutGuide type="bottom" id="kVX-e4-Q2I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5HN-2U-80G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="敵方稱號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1j1-bb-wxb">
+                                <rect key="frame" x="33" y="49" width="86" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="敵方角色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uji-sl-hXa">
+                                <rect key="frame" x="139" y="49" width="86" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="敵方戰力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfJ-It-zZp">
+                                <rect key="frame" x="239" y="49" width="86" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ｖ.S." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jmf-Fs-ahE">
+                                <rect key="frame" x="139" y="130" width="87" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我方稱號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pW-O0-CwQ">
+                                <rect key="frame" x="33" y="188" width="86" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我方角色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnu-CN-4cC">
+                                <rect key="frame" x="139" y="188" width="86" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我方戰力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnf-cf-dNJ">
+                                <rect key="frame" x="239" y="188" width="86" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="戰鬥敘述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eX6-Sd-jB6">
+                                <rect key="frame" x="33" y="269" width="307" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="戰鬥結果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzN-Fy-zgy">
+                                <rect key="frame" x="25" y="333" width="86" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="你ＸＸ了" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6e6-HJ-waV">
+                                <rect key="frame" x="119" y="333" width="174" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="目前總積分：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyi-Xu-faU">
+                                <rect key="frame" x="33" y="397" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="99999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JU-rN-3U4">
+                                <rect key="frame" x="143" y="397" width="111" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWa-b0-odJ">
+                                <rect key="frame" x="143" y="459" width="91" height="30"/>
+                                <state key="normal" title="返回決鬥場"/>
+                                <connections>
+                                    <action selector="back:" destination="JLR-uh-R1a" eventType="touchUpInside" id="7k2-xm-RWY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="battleProcessLabel" destination="eX6-Sd-jB6" id="Dxh-NJ-1LN"/>
+                        <outlet property="battleResultLabel" destination="6e6-HJ-waV" id="T9k-cZ-xeS"/>
+                        <outlet property="enemyAppeLabel" destination="1j1-bb-wxb" id="9Wc-tL-aAj"/>
+                        <outlet property="enemyFightValueLabel" destination="WfJ-It-zZp" id="R7n-Yp-Gjq"/>
+                        <outlet property="enemyRoleLabel" destination="uji-sl-hXa" id="Rhv-pq-0I1"/>
+                        <outlet property="myAppeLabel" destination="4pW-O0-CwQ" id="Du1-CS-4PP"/>
+                        <outlet property="myFightValueLabel" destination="Pnf-cf-dNJ" id="BF1-Ed-kHr"/>
+                        <outlet property="myRoleLabel" destination="Hnu-CN-4cC" id="gF3-va-fhg"/>
+                        <outlet property="totalScoreLabel" destination="6JU-rN-3U4" id="iEC-rt-0wj"/>
+                        <outlet property="winOrLoseLabel" destination="LzN-Fy-zgy" id="yns-bz-yGh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fCI-by-wC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1158" y="-87"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="UmG-Dd-HgF">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XlD-Dc-VpK" customClass="LoginViewController" customModule="占卜小遊戲" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ar4-bb-ak9"/>
+                        <viewControllerLayoutGuide type="bottom" id="dfb-ba-sYR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nxr-lY-iol">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0b6-PK-eFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1208" y="-694"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GBx-VB-qXs">

@@ -16,6 +16,8 @@
 		DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8841F21BF5AEFC00936610 /* RoleSetting.swift */; settings = {ASSET_TAGS = (); }; };
 		DEE5AAA81C11917F00E47EB5 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE5AAA71C11917F00E47EB5 /* BattleViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DEE5AACC1C16C36A00E47EB5 /* GameData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEE5AACA1C16C36A00E47EB5 /* GameData.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		DEE5AACE1C187DA800E47EB5 /* FightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE5AACD1C187DA800E47EB5 /* FightViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		DEE5AAD01C2299C700E47EB5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE5AACF1C2299C700E47EB5 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		DE8841F21BF5AEFC00936610 /* RoleSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleSetting.swift; sourceTree = "<group>"; };
 		DEE5AAA71C11917F00E47EB5 /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		DEE5AACB1C16C36A00E47EB5 /* GameData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameData.xcdatamodel; sourceTree = "<group>"; };
+		DEE5AACD1C187DA800E47EB5 /* FightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FightViewController.swift; sourceTree = "<group>"; };
+		DEE5AACF1C2299C700E47EB5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FBBABB89E575536C85B6D614 /* Pods-占卜小遊戲.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-占卜小遊戲.debug.xcconfig"; path = "Pods/Target Support Files/Pods-占卜小遊戲/Pods-占卜小遊戲.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +92,8 @@
 				DE8841F21BF5AEFC00936610 /* RoleSetting.swift */,
 				DEE5AAA71C11917F00E47EB5 /* BattleViewController.swift */,
 				DEE5AACA1C16C36A00E47EB5 /* GameData.xcdatamodeld */,
+				DEE5AACD1C187DA800E47EB5 /* FightViewController.swift */,
+				DEE5AACF1C2299C700E47EB5 /* LoginViewController.swift */,
 			);
 			path = "占卜小遊戲";
 			sourceTree = "<group>";
@@ -223,11 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE5AAD01C2299C700E47EB5 /* LoginViewController.swift in Sources */,
 				DEE5AAA81C11917F00E47EB5 /* BattleViewController.swift in Sources */,
 				DE20A8491BF06E7800B7D0A3 /* HomeViewController.swift in Sources */,
 				DEE5AACC1C16C36A00E47EB5 /* GameData.xcdatamodeld in Sources */,
 				DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */,
 				DE20A8471BF06E7800B7D0A3 /* AppDelegate.swift in Sources */,
+				DEE5AACE1C187DA800E47EB5 /* FightViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +350,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "占卜小遊戲/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "AC.-----";
+				PRODUCT_BUNDLE_IDENTIFIER = AC.Divine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "占卜小遊戲/占卜小遊戲-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -357,7 +365,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "占卜小遊戲/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "AC.-----";
+				PRODUCT_BUNDLE_IDENTIFIER = AC.Divine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "占卜小遊戲/占卜小遊戲-Bridging-Header.h";
 			};

@@ -12,22 +12,27 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
     @IBOutlet weak var defenseBattleValue: UILabel!
     @IBOutlet weak var defensePhase: UILabel!
     @IBOutlet weak var defense: UIPickerView!
-    @IBOutlet weak var enemyRole: UILabel!
+    @IBOutlet weak var enemyRoleLabel: UILabel!
     @IBOutlet weak var myAppe: UILabel!
     @IBOutlet weak var myRole: UILabel!
     @IBOutlet weak var myBattleValue: UILabel!
     
+    @IBOutlet weak var enemyPhase: UILabel!
     var defenseAppeData = [RoleSetting]();
     var defenseRoleData = [RoleSetting]();
+    var randomAppeData = [RoleSetting]();
+    var randomRoleData = [RoleSetting]();
+    var enemyAppe = RoleSetting.init(name: "", valueProp: 0);
+    var enemyRole = RoleSetting.init(name: "", valueProp: 0);
+    var enemyBattleValue = 0;
     var attackAppe = NSString();
     var attackRole = NSString();
-    var attackValue = NSString();
+    var attackValue = 0;
     let usrDefault = NSUserDefaults.standardUserDefaults()
     var luckyNumber = 0;
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let defenseAppValue = usrDefault.objectForKey("defenseAppValue")
         let defenseRoleValue = usrDefault.objectForKey("defenseRoleValue")
         if
@@ -36,12 +41,15 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
             
             let battleData = HomeViewController.getBattleValue(defenseAppValue as! Int,roleCount:defenseRoleValue as! Int,lucknumber:luckyNumber,roleArray:defenseRoleData,appearray:defenseAppeData)
             defensePhase.text = battleData.phase
-            defenseBattleValue.text = battleData.battleValue
+            defenseBattleValue.text = String(abs(battleData.battleValue))
             defense.selectRow(defenseAppValue as! Int, inComponent:0, animated:false)
             defense.selectRow(defenseRoleValue as! Int, inComponent:1, animated:false)
         }
         
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+//        NSLog("attackAppe:%@",attackAppe)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,8 +59,43 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
     @IBAction func searchEnemy(sender: UIButton) {
         myAppe.text = attackAppe as String
         myRole.text = attackRole as String
-        myBattleValue.text = attackValue as String
+        myBattleValue.text = String(abs(attackValue))
+        let enemyAppeArray = randomAppeData.shuffle();
+        let enemyRoleArray = randomRoleData.shuffle();
+        enemyAppe = enemyAppeArray[0];
+        enemyRole = enemyRoleArray[0];
+        enemyRoleLabel.text = enemyRole.nameProperty
+        enemyBattleValue = enemyAppe.valueProperty * enemyRole.valueProperty
+        if
+            enemyBattleValue > 0
+        {
+        enemyPhase.text = "正義"
+        }
+        else
+        {
+        enemyPhase.text = "邪惡"
+        }
+        sender.setTitle("再次搜索敵人", forState: UIControlState.Normal)
+        
     }
+    @IBAction func startFighting(sender: UIButton) {
+    self.performSegueWithIdentifier("fight",sender: self)
+    enemyRoleLabel.text = ""
+    enemyPhase.text = ""
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fight"
+        {
+            let controller = segue.destinationViewController as! FightViewController;
+            controller.enemyAppeData = enemyAppe;
+            controller.enemyRoleData = enemyRole;
+            controller.enemyFightValue = enemyBattleValue;
+            controller.myRole = attackRole
+            controller.myAppe = attackAppe
+            controller.myFightValue = attackValue
+        }
+    }
+
     /*
     // MARK: - Navigation
 
@@ -87,7 +130,7 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         usrDefault.synchronize()
         let battleData = HomeViewController.getBattleValue(defense.selectedRowInComponent(0),roleCount:defense.selectedRowInComponent(1),lucknumber:luckyNumber,roleArray:defenseRoleData,appearray:defenseAppeData)
         defensePhase.text = battleData.phase
-        defenseBattleValue.text = battleData.battleValue
+        defenseBattleValue.text = String(abs(battleData.battleValue))
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 1

@@ -5,5 +5,9 @@
 
 target '占卜小遊戲' do
 pod 'Parse'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+pod 'FBSDKShareKit'
+pod 'ParseFacebookUtilsV4'
 end
 
