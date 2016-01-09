@@ -11,6 +11,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <ParseFacebookUtilsV4.h>
+#import <AFNetworking/AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 
 
 @interface ParseObjectC : NSObject

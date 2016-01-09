@@ -9,6 +9,10 @@
 import UIKit
 
 class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+    @IBOutlet weak var totalScore: UILabel!
+    @IBOutlet weak var defenseConst: NSLayoutConstraint!
+    @IBOutlet weak var attackConst: NSLayoutConstraint!
+    @IBOutlet weak var startConst: NSLayoutConstraint!
     @IBOutlet weak var luckyNum: UILabel!
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var phase: UILabel!
@@ -21,8 +25,13 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     var luckNumber = 0;
     var attackBattleNum = 0
     var loginStatus:String?
+    var theRoleDisplay = ""
+    var theAppeDisplay = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        defenseConst.constant = 0
+       attackConst.constant = 0
+        startConst.constant = 0
         let currentUser = PFUser.currentUser()
         if currentUser == nil
         {
@@ -32,10 +41,27 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         getParseData(qureyAppellation,name:"adjective",battleValue:"value",numberCompient:0);
         let qureyRole = PFQuery(className:"Role");
         getParseData(qureyRole,name:"roleName",battleValue:"battleValue",numberCompient:1);
-        self.myPicker.reloadAllComponents();
+//        self.myPicker.reloadAllComponents();
 //        qurey.selectKeys(["adjective"]);
         
     }
+    override func viewWillAppear(animated: Bool) {
+        let currentUser = PFUser.currentUser()
+        if
+            currentUser != nil
+        {
+        let query = PFQuery(className: "Rank")
+        query.whereKey("user", equalTo: currentUser!)
+        do {
+            let userScoreData = try query.getFirstObject();
+            self.totalScore.text = String(userScoreData["score"])
+        } catch _ {
+            self.totalScore.text = ""
+        }
+        }
+
+    }
+    
     override func viewDidAppear(animated: Bool) {
         if
             loginStatus == "NO"
@@ -70,7 +96,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         tmpAdd.removeFirst();
         tmpRoleAdd.removeFirst()
         };
-        self.myPicker.reloadAllComponents();
+//        self.myPicker.reloadAllComponents();
         //取得幸運數字
         luckNumber = Int(arc4random_uniform(100));
         luckyNum.text = String(luckNumber);
@@ -81,11 +107,14 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         let luckyB = CGFloat(arc4random_uniform(255))/225.0;
         let luckColor = UIColor(red: luckyR, green: luckyG, blue: luckyB, alpha:1.0);
         colorView.backgroundColor = luckColor;
+        startConst.constant = 0
+        defenseConst.constant = 30
+        attackConst.constant = 30
         //計算戰力
-        let battleData = HomeViewController.getBattleValue(myPicker.selectedRowInComponent(0),roleCount:myPicker.selectedRowInComponent(1),lucknumber:luckNumber,roleArray:pickerRoleData,appearray:pickerAppeData)
-        phase.text = battleData.phase
-        battleNum.text = String(abs(battleData.battleValue))
-        attackBattleNum = battleData.battleValue
+//        let battleData = HomeViewController.getBattleValue(myPicker.selectedRowInComponent(0),roleCount:myPicker.selectedRowInComponent(1),lucknumber:luckNumber,roleArray:pickerRoleData,appearray:pickerAppeData)
+//        phase.text = battleData.phase
+//        battleNum.text = String(abs(battleData.battleValue))
+//        attackBattleNum = battleData.battleValue
         
     }
 
@@ -102,14 +131,20 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                     number == 1
                 {
                     self.totalRoleData.append(roleSetting)
+                    self.theRoleDisplay = "YES"
                 }
                 else
                 {
                  self.totalAppeData.append(roleSetting);
+                    self.theAppeDisplay = "YES"
                 }
                 
+                if
+                    self.theAppeDisplay == "YES" && self.theRoleDisplay == "YES"
+                {
+                    self.startConst.constant = 30
+                }
             };
-            NSLog("finish");
         };
 
     };
@@ -118,14 +153,35 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
                 if user.isNew {
+                    FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"name,picture"]).startWithCompletionHandler({
+                        (connection,result, error: NSError!) -> Void in
+                        if error == nil {
+//                            NSLog("%@",result)
+                            print(result)
+                            user["nickname"] = result["name"]
+                            user["photo"] = result["picture"]!!["data"]!!["url"]!
+                            user.saveEventually()
+                            
+                        }
+                    })
                     let gameScore = PFObject(className:"Rank")
                     gameScore["score"]  = 0
                     gameScore["user"] = user
                     gameScore.saveEventually()
+                    self.totalScore.text = "0"
                     print("User signed up and logged in through Facebook!")
                 }
                 else {
                     print("User logged in through Facebook!")
+                    let query = PFQuery(className: "Rank")
+                    query.whereKey("user", equalTo: user)
+                    do {
+                       let userScoreData = try query.getFirstObject();
+                        self.totalScore.text = userScoreData["score"] as? String
+                    } catch _ {
+                        self.totalScore.text = ""
+                    }
+
                 }
             self.loginStatus = "YES"
             }
@@ -165,11 +221,12 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             controller.defenseAppeData = pickerAppeData;
             controller.defenseRoleData = pickerRoleData;
             controller.luckyNumber = luckNumber;
-            controller.attackAppe = pickerAppeData[myPicker.selectedRowInComponent(0)].nameProperty
-            controller.attackRole = pickerRoleData[myPicker.selectedRowInComponent(1)].nameProperty
-            controller.attackValue = attackBattleNum
+//            controller.attackAppe = pickerAppeData[myPicker.selectedRowInComponent(0)].nameProperty
+//            controller.attackRole = pickerRoleData[myPicker.selectedRowInComponent(1)].nameProperty
+//            controller.attackValue = attackBattleNum
             controller.randomAppeData = totalAppeData
             controller.randomRoleData = totalRoleData
+            controller.battleType = "攻擊"
         }
     }
     
