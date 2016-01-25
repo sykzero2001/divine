@@ -38,6 +38,8 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchButton.layer.cornerRadius = searchButton.layer.bounds.size.width/10
+        fightButton.layer.cornerRadius = fightButton.layer.bounds.size.width/10
         battleTitleLabel.text = battleType
         battleView.hidden = true
         fightButton.hidden = true
@@ -101,6 +103,7 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         
     }
     @IBAction func startFighting(sender: UIButton) {
+    SVProgressHUD.show()
     battleView.hidden = true
     self.performSegueWithIdentifier("fight",sender: self)
     searchButton.setTitle("開始搜索敵人", forState: UIControlState.Normal)

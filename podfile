@@ -10,5 +10,6 @@ pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
 pod 'ParseFacebookUtilsV4'
 pod 'AFNetworking'
+pod 'SVProgressHUD'
 end
 

@@ -30,6 +30,8 @@ class FightViewController: UIViewController {
     var totalScore = 0;
     var userScoreData:PFObject?;
     var fightResult = [String:String]();
+    var winCount = 0;
+    var loseCount = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +46,20 @@ class FightViewController: UIViewController {
             userScoreData = nil
         }
         totalScore = userScoreData!["score"] as! Int
+        winCount = userScoreData!["win"] as! Int
+        loseCount = userScoreData!["lose"] as! Int
         enemyAppeLabel.text = enemyAppeData.nameProperty
         enemyRoleLabel.text = enemyRoleData.nameProperty
         enemyFightValueLabel.text =  String(abs(enemyFightValue))
         myAppeLabel.text = myAppe as String
         myRoleLabel.text = myRole as String
         myFightValueLabel.text = String(abs(myFightValue))
+        setTextColor(enemyAppeLabel,fightValue:enemyFightValue)
+        setTextColor(enemyRoleLabel, fightValue: enemyFightValue)
+        setTextColor(enemyFightValueLabel, fightValue: enemyFightValue)
+        setTextColor(myAppeLabel, fightValue: myFightValue)
+        setTextColor(myRoleLabel, fightValue: myFightValue)
+        setTextColor(myFightValueLabel, fightValue: myFightValue)
         getFightResult()
         // Do any additional setup after loading the view.
     }
@@ -57,6 +67,17 @@ class FightViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func setTextColor(textLabel:UILabel,fightValue value:Int){
+        if
+            value < 0
+        {
+        textLabel.textColor = UIColor.redColor()
+        }
+        else
+        {
+        textLabel.textColor = UIColor.blueColor()
+        }
     }
     func getFightResult(){
         //計算真正的戰力
@@ -100,6 +121,7 @@ class FightViewController: UIViewController {
                 getScore = (enemyRealFight - myRealFight) / 100
                 //邪惡加成
                 let getScoreReslut = getEvilBuff(myFightValue,battleScore:getScore)
+                winCount = winCount + 1
                 fightResult = ["對戰結果":"險勝！","獲取分數":"你獲得了" + String(getScoreReslut)+"分","對戰紀錄":battlePocessString,"目前總分":String(totalScore + getScoreReslut)]
             }
             else
@@ -118,6 +140,7 @@ class FightViewController: UIViewController {
                     totalScoreTmp = 0
                 }
                 let battlePocessString = getBattleProcess(["壓倒性的力量擊潰了你！","在一番激烈交戰之後,仍然不敵而落敗","在決勝負的關鍵時刻,你的武器居然壞了！"])
+                loseCount = loseCount + 1
                 fightResult = ["對戰結果":"戰敗！","獲取分數":"你失去了" + String(getScoreReslut)+"分","對戰紀錄":battlePocessString,"目前總分":String(totalScoreTmp)]
             }
         }
@@ -141,14 +164,16 @@ class FightViewController: UIViewController {
                 {
                     totalScoreTmp = 0
                 }
-                let battlePocessString = getBattleProcess(["在關鍵時刻,你不小心滑了一跤,被偷襲了！","開打才發現忘了帶武器！慘敗","敵人是你的夢中情人,你無法對他認真下手！"])
-                fightResult = ["對戰結果":"戰敗！","獲取分數":"你失去了" + String(getScoreReslut)+"分","對戰紀錄":battlePocessString,"目前總分":String(totalScoreTmp)]
+                loseCount = loseCount + 1
+                let battlePocessString = getBattleProcess(["在關鍵時刻,你不小心滑了一跤,被偷襲了！","開打才發現忘了帶武器！","敵人是你的夢中情人,你無法對他認真下手！"])
+                fightResult = ["對戰結果":"惜敗！","獲取分數":"你失去了" + String(getScoreReslut)+"分","對戰紀錄":battlePocessString,"目前總分":String(totalScoreTmp)]
             }
             else
             {
                 getScore = (myRealFight - enemyRealFight)
                 //邪惡加成
                 let getScoreReslut = getEvilBuff(myFightValue,battleScore:getScore)
+                winCount = winCount + 1
                 let battlePocessString = getBattleProcess(["你憤怒的致命一擊打倒了敵人！","敵人害怕你的殺氣,舉雙手投降了！","打到一半,敵人因肚子痛而逃走了！"])
                 fightResult = ["對戰結果":"勝利！","獲取分數":"你獲得了" + String(getScoreReslut)+"分","對戰紀錄":battlePocessString,"目前總分":String(totalScore + getScoreReslut)]
             }
@@ -158,7 +183,10 @@ class FightViewController: UIViewController {
         winOrLoseLabel.text = fightResult["對戰結果"]
         totalScoreLabel.text = fightResult["目前總分"]
         userScoreData!["score"] = Int(fightResult["目前總分"]!)
+        userScoreData!["win"] = winCount
+        userScoreData!["lose"] = loseCount
         userScoreData!.saveEventually()
+        SVProgressHUD.dismiss()
         
     }
     func getEvilBuff(battleValue:Int,battleScore:Int)->Int{

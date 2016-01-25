@@ -13,6 +13,7 @@
 #import <ParseFacebookUtilsV4.h>
 #import <AFNetworking/AFNetworking.h>
 #import "UIImageView+AFNetworking.h"
+#import "SVProgressHUD.h"
 
 
 @interface ParseObjectC : NSObject

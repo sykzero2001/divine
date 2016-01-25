@@ -10,11 +10,13 @@ import UIKit
 
 class RankTableViewController: UITableViewController {
     var rankArray = [[String:String]]()
+    var currentUserId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib.init(nibName: "RankTableViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "RankCell")
         getNewRank()
+        currentUserId = ((PFUser.currentUser()?.objectId)! as String)
 //        let qureyRank = PFQuery(className:"Rank");
 //        qureyRank.orderByDescending("score")
 //        qureyRank.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, errors:NSError?) -> Void in
@@ -41,9 +43,10 @@ class RankTableViewController: UITableViewController {
             for object in objects!{
                 let user = object["user"] as! PFObject
                 let userName = user["nickname"] as! String
+                let userId = user.objectId! as String
 //                let userName = String(userNameTmp)
                 let photoUrl = object["user"]["photo"] as! String
-                let dic = ["user":userName ,"photo":photoUrl,"score":String(object["score"]) ]
+                let dic = ["user":userName ,"photo":photoUrl,"score":String(object["score"]),"userId":userId ]
                 self.rankArray.append(dic)
             };
             self.tableView.reloadData()
@@ -93,6 +96,11 @@ class RankTableViewController: UITableViewController {
         cell.rankName.text = rankData["user"]
         cell.totalScore.text = rankData["score"]
         cell.rankSeq.text = String(indexPath.row + 1)
+        if
+            currentUserId == rankData["userId"]
+        {
+         cell.backgroundColor = UIColor.yellowColor()
+        }
         }
         
         return cell

@@ -21,6 +21,10 @@
 		DEE5AAD01C2299C700E47EB5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE5AACF1C2299C700E47EB5 /* LoginViewController.swift */; };
 		DEEBA1111C3BB6150024493B /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA10F1C3BB6150024493B /* RankTableViewCell.swift */; };
 		DEEBA1121C3BB6150024493B /* RankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEBA1101C3BB6150024493B /* RankTableViewCell.xib */; };
+		DEEBA1141C48EB660024493B /* TeachViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA1131C48EB660024493B /* TeachViewController1.swift */; };
+		DEEBA1161C4CAE360024493B /* TeachViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA1151C4CAE360024493B /* TeachViewController2.swift */; };
+		DEEBA1181C4E12410024493B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA1171C4E12410024493B /* TestViewController.swift */; };
+		DEEBA11A1C4E18390024493B /* TeachViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA1191C4E18390024493B /* TeachViewController3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		DEE5AACF1C2299C700E47EB5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DEEBA10F1C3BB6150024493B /* RankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
 		DEEBA1101C3BB6150024493B /* RankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankTableViewCell.xib; sourceTree = "<group>"; };
+		DEEBA1131C48EB660024493B /* TeachViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachViewController1.swift; sourceTree = "<group>"; };
+		DEEBA1151C4CAE360024493B /* TeachViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachViewController2.swift; sourceTree = "<group>"; };
+		DEEBA1171C4E12410024493B /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		DEEBA1191C4E18390024493B /* TeachViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachViewController3.swift; sourceTree = "<group>"; };
 		FBBABB89E575536C85B6D614 /* Pods-占卜小遊戲.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-占卜小遊戲.debug.xcconfig"; path = "Pods/Target Support Files/Pods-占卜小遊戲/Pods-占卜小遊戲.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +111,10 @@
 				DE9DF2781C351B7300415627 /* RankTableViewController.swift */,
 				DEEBA10F1C3BB6150024493B /* RankTableViewCell.swift */,
 				DEEBA1101C3BB6150024493B /* RankTableViewCell.xib */,
+				DEEBA1131C48EB660024493B /* TeachViewController1.swift */,
+				DEEBA1151C4CAE360024493B /* TeachViewController2.swift */,
+				DEEBA1171C4E12410024493B /* TestViewController.swift */,
+				DEEBA1191C4E18390024493B /* TeachViewController3.swift */,
 			);
 			path = "占卜小遊戲";
 			sourceTree = "<group>";
@@ -247,7 +259,11 @@
 				DEE5AACC1C16C36A00E47EB5 /* GameData.xcdatamodeld in Sources */,
 				DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */,
 				DE20A8471BF06E7800B7D0A3 /* AppDelegate.swift in Sources */,
+				DEEBA1141C48EB660024493B /* TeachViewController1.swift in Sources */,
 				DEE5AACE1C187DA800E47EB5 /* FightViewController.swift in Sources */,
+				DEEBA1181C4E12410024493B /* TestViewController.swift in Sources */,
+				DEEBA11A1C4E18390024493B /* TeachViewController3.swift in Sources */,
+				DEEBA1161C4CAE360024493B /* TeachViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

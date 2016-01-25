@@ -9,6 +9,10 @@
 import UIKit
 
 class TestViewController: UIViewController {
+    @IBAction func startTest(sender: UIButton) {
+        let teachController = (self.storyboard?.instantiateViewControllerWithIdentifier("Teach1"))! as UIViewController
+        self.presentViewController(teachController, animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
