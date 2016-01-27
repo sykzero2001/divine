@@ -154,6 +154,7 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         battleView.hidden = true
+        fightButton.hidden = true
         if
             battleType == "防禦"
         {

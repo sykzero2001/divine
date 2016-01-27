@@ -16,6 +16,7 @@
 #import "SVProgressHUD.h"
 
 
+@import GoogleMobileAds ;
 @interface ParseObjectC : NSObject
 
 @end

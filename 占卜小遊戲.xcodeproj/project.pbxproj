@@ -25,6 +25,7 @@
 		DEEBA1161C4CAE360024493B /* TeachViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA1151C4CAE360024493B /* TeachViewController2.swift */; };
 		DEEBA1181C4E12410024493B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA1171C4E12410024493B /* TestViewController.swift */; };
 		DEEBA11A1C4E18390024493B /* TeachViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA1191C4E18390024493B /* TeachViewController3.swift */; };
+		DEEBA11C1C5770FE0024493B /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEBA11B1C5770FE0024493B /* TabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		DEEBA1151C4CAE360024493B /* TeachViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachViewController2.swift; sourceTree = "<group>"; };
 		DEEBA1171C4E12410024493B /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		DEEBA1191C4E18390024493B /* TeachViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachViewController3.swift; sourceTree = "<group>"; };
+		DEEBA11B1C5770FE0024493B /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		FBBABB89E575536C85B6D614 /* Pods-占卜小遊戲.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-占卜小遊戲.debug.xcconfig"; path = "Pods/Target Support Files/Pods-占卜小遊戲/Pods-占卜小遊戲.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 				DEEBA1151C4CAE360024493B /* TeachViewController2.swift */,
 				DEEBA1171C4E12410024493B /* TestViewController.swift */,
 				DEEBA1191C4E18390024493B /* TeachViewController3.swift */,
+				DEEBA11B1C5770FE0024493B /* TabViewController.swift */,
 			);
 			path = "占卜小遊戲";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				DEE5AACE1C187DA800E47EB5 /* FightViewController.swift in Sources */,
 				DEEBA1181C4E12410024493B /* TestViewController.swift in Sources */,
 				DEEBA11A1C4E18390024493B /* TeachViewController3.swift in Sources */,
+				DEEBA11C1C5770FE0024493B /* TabViewController.swift in Sources */,
 				DEEBA1161C4CAE360024493B /* TeachViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

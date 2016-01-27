@@ -11,6 +11,7 @@ import UIKit
 class FightViewController: UIViewController {
     var enemyAppeData = RoleSetting.init(name: "", valueProp: 0);
     
+    @IBOutlet weak var adView: GADBannerView!
     @IBOutlet weak var enemyAppeLabel: UILabel!
     @IBOutlet weak var enemyRoleLabel: UILabel!
     @IBOutlet weak var enemyFightValueLabel: UILabel!
@@ -61,6 +62,9 @@ class FightViewController: UIViewController {
         setTextColor(myRoleLabel, fightValue: myFightValue)
         setTextColor(myFightValueLabel, fightValue: myFightValue)
         getFightResult()
+        adView.adUnitID = "ca-app-pub-2545255102687972/6493325241"
+        adView.rootViewController = self
+        adView.loadRequest(GADRequest.init())
         // Do any additional setup after loading the view.
     }
 

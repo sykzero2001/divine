@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+    @IBOutlet weak var adView: GADBannerView!
     @IBOutlet weak var startDivine: UIButton!
     @IBOutlet weak var startBattle: UIButton!
     @IBOutlet weak var totalScore: UILabel!
@@ -43,7 +44,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             qureyPlayerRole.whereKey("user", equalTo: currentUser!)
             qureyPlayerRole.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, errors:NSError?) -> Void in
                 if
-                    objects?.count != 0
+                    objects != nil && objects?.count != 0
                 {
                     for object in objects!{
                         let updateTime = object.updatedAt! as NSDate
@@ -109,62 +110,12 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         {
         checkUserSet()
         }
-//        let qureyAppellation = PFQuery(className:"Appellation");
-//        getParseData(qureyAppellation,name:"adjective",battleValue:"value",numberCompient:0);
-//        let qureyRole = PFQuery(className:"Role");
-//        getParseData(qureyRole,name:"roleName",battleValue:"battleValue",numberCompient:1);
-//        //讀取角色設定,檢查是否要重新占卜
-//        if currentUser != nil
-//        {
-//        let qureyPlayerRole = PFQuery(className:"PlayerRole");
-//        qureyPlayerRole.isEqual("user")
-//        qureyPlayerRole.whereKey("user", equalTo: currentUser!)
-//        qureyPlayerRole.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, errors:NSError?) -> Void in
-//            if
-//                objects?.count != 0
-//            {
-//                for object in objects!{
-//                        let updateTime = object.updatedAt! as NSDate
-//                        let date = NSDate();
-//                                // "Apr 1, 2015, 8:53 AM" <-- local without seconds
-//                            let formatter = NSDateFormatter();
-//                            formatter.dateFormat = "yyyy-MM-dd";
-//                            let lastTimeZoneStr = formatter.stringFromDate(updateTime);
-//                            let dateZoneStr = formatter.stringFromDate(date);
-//                            // "2015-04-01 08:52:00 -0400" <-- same date, local, but with seconds
-////                            formatter.timeZone = NSTimeZone(abbreviation: "UTC");
-////                            let utcTimeZoneStr = formatter.stringFromDate(date);
-//                                // "2015-04-01 12:52:00 +0000" <-- same date, now in UTC
-//                            if
-//                                dateZoneStr <= lastTimeZoneStr
-//                            {
-//                             self.refresh = "N"
-//                            }
-//        
-//                            }
-//                //若不需重新占卜
-//                if
-//                    self.refresh == "N"
-//
-//                {
-//                    for object in objects!{
-//                        
-//                         let roleSetting = RoleSetting.init(name: object["role"] as! String, valueProp: object["rolevalue"] as! Int);
-//                        let appeSetting = RoleSetting.init(name: object["appellation"] as! String, valueProp: object["appevalue"] as! Int);
-//                        self.pickerRoleData.append(roleSetting)
-//                        self.pickerAppeData.append(appeSetting)
-//                    }
-//                    self.startConst.constant = 0
-//                    self.defenseConst.constant = 30
-//                    self.attackConst.constant = 30
-//                }
-//            }
-//            }
-//        }
-//
-//        self.myPicker.reloadAllComponents();
-//        qurey.selectKeys(["adjective"]);
-        
+        adView.adUnitID = "ca-app-pub-2545255102687972/6493325241"
+        adView.rootViewController = self
+        adView.loadRequest(GADRequest.init())
+//        self.view.window?.rootViewController = CJPAdController.sharedInstance()
+//        self.view.window?.rootViewController = CJPAdController.sharedInstance()
+//        self.view.window?.rootViewController = CJPAdController.sharedInstance()
     }
     override func viewWillAppear(animated: Bool) {
         currentUser = PFUser.currentUser()

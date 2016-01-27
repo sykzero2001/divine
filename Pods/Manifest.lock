@@ -33,6 +33,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.8.0):
     - FBSDKCoreKit
+  - Google-Mobile-Ads-SDK (7.6.0)
   - Parse (1.9.1):
     - Bolts/Tasks (>= 1.4.0)
   - ParseFacebookUtilsV4 (1.9.0):
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - Google-Mobile-Ads-SDK (~> 7.0)
   - Parse
   - ParseFacebookUtilsV4
   - SVProgressHUD
@@ -57,6 +59,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
   FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
   FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
+  Google-Mobile-Ads-SDK: 0290020329c61183c4685304264b73382bc49fb4
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
   ParseFacebookUtilsV4: aadebfaaaf4a45bf0a0992863bf48c8fc49189e3
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
