@@ -9,6 +9,7 @@
 import UIKit
 
 class FightViewController: UIViewController {
+    @IBOutlet weak var backButton: UIButton!
     var enemyAppeData = RoleSetting.init(name: "", valueProp: 0);
     
     @IBOutlet weak var adView: GADBannerView!
@@ -33,9 +34,12 @@ class FightViewController: UIViewController {
     var fightResult = [String:String]();
     var winCount = 0;
     var loseCount = 0;
+    var everyDayWinCountData = [PFObject]()
+    var everyDayWinCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.layer.cornerRadius = backButton.layer.bounds.size.width/10
         let currentUser = PFUser.currentUser()
 
         let query = PFQuery(className: "Rank")
@@ -45,6 +49,15 @@ class FightViewController: UIViewController {
             userScoreData = try query.getFirstObject();
         } catch _ {
             userScoreData = nil
+        }
+        let queryNovel = PFQuery(className: "PlayerRole")
+        queryNovel.whereKey("user", equalTo: currentUser!)
+        do {
+            let tmpData = try queryNovel.findObjects()
+            everyDayWinCountData = tmpData
+            everyDayWinCount = everyDayWinCountData[0]["wincount"]as! Int
+        } catch _ {
+            everyDayWinCountData = []
         }
         totalScore = userScoreData!["score"] as! Int
         winCount = userScoreData!["win"] as! Int
@@ -126,6 +139,7 @@ class FightViewController: UIViewController {
                 //邪惡加成
                 let getScoreReslut = getEvilBuff(myFightValue,battleScore:getScore)
                 winCount = winCount + 1
+                everyDayWinCount = everyDayWinCount + 1
                 fightResult = ["對戰結果":"險勝！","獲取分數":"你獲得了" + String(getScoreReslut)+"分","對戰紀錄":battlePocessString,"目前總分":String(totalScore + getScoreReslut)]
             }
             else
@@ -178,6 +192,7 @@ class FightViewController: UIViewController {
                 //邪惡加成
                 let getScoreReslut = getEvilBuff(myFightValue,battleScore:getScore)
                 winCount = winCount + 1
+                everyDayWinCount = everyDayWinCount + 1
                 let battlePocessString = getBattleProcess(["你憤怒的致命一擊打倒了敵人！","敵人害怕你的殺氣,舉雙手投降了！","打到一半,敵人因肚子痛而逃走了！"])
                 fightResult = ["對戰結果":"勝利！","獲取分數":"你獲得了" + String(getScoreReslut)+"分","對戰紀錄":battlePocessString,"目前總分":String(totalScore + getScoreReslut)]
             }
@@ -190,6 +205,17 @@ class FightViewController: UIViewController {
         userScoreData!["win"] = winCount
         userScoreData!["lose"] = loseCount
         userScoreData!.saveEventually()
+        if
+            everyDayWinCount > 10
+        {
+            everyDayWinCount = 10
+        }
+        for
+            winCountData in everyDayWinCountData
+        {
+        winCountData["wincount"] = everyDayWinCount
+        winCountData.saveEventually()
+        }
         SVProgressHUD.dismiss()
         
     }

@@ -74,6 +74,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                             self.pickerAppeData.append(appeSetting)
                             let luckColor = UIColor(red: object["redvalue"] as! CGFloat, green: object["greenvalue"] as! CGFloat, blue: object["bluevalue"] as! CGFloat, alpha:1.0);
                             self.colorView.backgroundColor = luckColor;
+                            self.luckNumber = object["luckynumber"] as! Int
                             self.luckyNum.text = String(object["luckynumber"]);
 
                         }
@@ -222,6 +223,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                 playerRoleData["greenvalue"] = luckyG
                 playerRoleData["bluevalue"] = luckyB
                 playerRoleData["luckynumber"] = self.luckNumber
+                playerRoleData["wincount"] = 0
 //                SVProgressHUD.show()
                 playerRoleData.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
@@ -248,6 +250,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                 object["greenvalue"] = luckyG
                 object["bluevalue"] = luckyB
                 object["luckynumber"] = self.luckNumber
+                object["wincount"] = 0
                 i++
                 object.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
@@ -292,19 +295,21 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                  self.totalAppeData.append(roleSetting);
                     self.theAppeDisplay = "YES"
                 }
-                
-                if
-                    self.theAppeDisplay == "YES" && self.theRoleDisplay == "YES" && self.refresh == "Y"
-                {
-                    self.startConst.constant = 30
-                    self.attackConst.constant = 0
-                }
-                else
-                {
+                           }
+            
+            if
+                self.theAppeDisplay == "YES" && self.theRoleDisplay == "YES" && self.refresh == "Y"
+            {
+                self.startConst.constant = 30
+                self.attackConst.constant = 0
+            }
+            else if
+                self.theAppeDisplay == "YES" && self.theRoleDisplay == "YES" && self.refresh == "N"
+            {
                 self.attackConst.constant = 30
                 self.startConst.constant = 0
-                }
-            };
+            }
+
         SVProgressHUD.dismiss()
         };
 
@@ -358,9 +363,6 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
        }
 
    static func getBattleValue(appeCount:Int,roleCount:Int,lucknumber:Int,roleArray:[RoleSetting],appearray:[RoleSetting])->(phase:String,battleValue:Int){
-//        let appeCount = myPicker.selectedRowInComponent(0);
-//        let roleCount = myPicker.selectedRowInComponent(1);
-//        let lucknumber = Int(luckyNum.text!);
         let battlepValueNum = appearray[appeCount].valueProperty * roleArray[roleCount].valueProperty + lucknumber
         let phase:String;
         if

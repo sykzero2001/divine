@@ -15,6 +15,9 @@
 		DE20A8511BF06E7800B7D0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE20A84F1BF06E7800B7D0A3 /* LaunchScreen.storyboard */; };
 		DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8841F21BF5AEFC00936610 /* RoleSetting.swift */; };
 		DE9DF2791C351B7300415627 /* RankTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9DF2781C351B7300415627 /* RankTableViewController.swift */; };
+		DED932691C5A41940074DA0D /* NovelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED932681C5A41940074DA0D /* NovelTableViewController.swift */; };
+		DED9326F1C5A6F9A0074DA0D /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9326E1C5A6F9A0074DA0D /* Novel.swift */; };
+		DED932711C5A7ED10074DA0D /* NovelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED932701C5A7ED10074DA0D /* NovelContentViewController.swift */; };
 		DEE5AAA81C11917F00E47EB5 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE5AAA71C11917F00E47EB5 /* BattleViewController.swift */; };
 		DEE5AACC1C16C36A00E47EB5 /* GameData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEE5AACA1C16C36A00E47EB5 /* GameData.xcdatamodeld */; };
 		DEE5AACE1C187DA800E47EB5 /* FightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE5AACD1C187DA800E47EB5 /* FightViewController.swift */; };
@@ -42,6 +45,9 @@
 		DE8841C81BF242F600936610 /* ParseObjectC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseObjectC.h; sourceTree = "<group>"; };
 		DE8841F21BF5AEFC00936610 /* RoleSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleSetting.swift; sourceTree = "<group>"; };
 		DE9DF2781C351B7300415627 /* RankTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewController.swift; sourceTree = "<group>"; };
+		DED932681C5A41940074DA0D /* NovelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovelTableViewController.swift; sourceTree = "<group>"; };
+		DED9326E1C5A6F9A0074DA0D /* Novel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
+		DED932701C5A7ED10074DA0D /* NovelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovelContentViewController.swift; sourceTree = "<group>"; };
 		DEE5AAA71C11917F00E47EB5 /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		DEE5AACB1C16C36A00E47EB5 /* GameData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameData.xcdatamodel; sourceTree = "<group>"; };
 		DEE5AACD1C187DA800E47EB5 /* FightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FightViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 				DE8841C81BF242F600936610 /* ParseObjectC.h */,
 				DE8841C71BF242F500936610 /* 占卜小遊戲-Bridging-Header.h */,
 				DE8841F21BF5AEFC00936610 /* RoleSetting.swift */,
+				DED9326E1C5A6F9A0074DA0D /* Novel.swift */,
 				DEE5AAA71C11917F00E47EB5 /* BattleViewController.swift */,
 				DEE5AACA1C16C36A00E47EB5 /* GameData.xcdatamodeld */,
 				DEE5AACD1C187DA800E47EB5 /* FightViewController.swift */,
@@ -118,6 +125,8 @@
 				DEEBA1171C4E12410024493B /* TestViewController.swift */,
 				DEEBA1191C4E18390024493B /* TeachViewController3.swift */,
 				DEEBA11B1C5770FE0024493B /* TabViewController.swift */,
+				DED932681C5A41940074DA0D /* NovelTableViewController.swift */,
+				DED932701C5A7ED10074DA0D /* NovelContentViewController.swift */,
 			);
 			path = "占卜小遊戲";
 			sourceTree = "<group>";
@@ -166,6 +175,7 @@
 				TargetAttributes = {
 					DE20A8421BF06E7800B7D0A3 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 9U5JLSE84B;
 					};
 				};
 			};
@@ -263,9 +273,12 @@
 				DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */,
 				DE20A8471BF06E7800B7D0A3 /* AppDelegate.swift in Sources */,
 				DEEBA1141C48EB660024493B /* TeachViewController1.swift in Sources */,
+				DED932691C5A41940074DA0D /* NovelTableViewController.swift in Sources */,
+				DED9326F1C5A6F9A0074DA0D /* Novel.swift in Sources */,
 				DEE5AACE1C187DA800E47EB5 /* FightViewController.swift in Sources */,
 				DEEBA1181C4E12410024493B /* TestViewController.swift in Sources */,
 				DEEBA11A1C4E18390024493B /* TeachViewController3.swift in Sources */,
+				DED932711C5A7ED10074DA0D /* NovelContentViewController.swift in Sources */,
 				DEEBA11C1C5770FE0024493B /* TabViewController.swift in Sources */,
 				DEEBA1161C4CAE360024493B /* TeachViewController2.swift in Sources */,
 			);
@@ -313,6 +326,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -334,6 +348,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -357,6 +372,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -371,6 +387,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -380,9 +397,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "占卜小遊戲/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AC.Divine;
+				PRODUCT_BUNDLE_IDENTIFIER = DivineGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "占卜小遊戲/占卜小遊戲-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -395,9 +413,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "占卜小遊戲/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AC.Divine;
+				PRODUCT_BUNDLE_IDENTIFIER = DivineGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "占卜小遊戲/占卜小遊戲-Bridging-Header.h";
 			};

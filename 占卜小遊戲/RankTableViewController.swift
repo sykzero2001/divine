@@ -13,27 +13,12 @@ class RankTableViewController: UITableViewController {
     var currentUserId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsSelection = false
         let nib = UINib.init(nibName: "RankTableViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "RankCell")
         getNewRank()
         currentUserId = ((PFUser.currentUser()?.objectId)! as String)
-//        let qureyRank = PFQuery(className:"Rank");
-//        qureyRank.orderByDescending("score")
-//        qureyRank.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, errors:NSError?) -> Void in
-//            for object in objects!{
-//                let userName = object["user"]["nickname"] as! String
-//                let photoUrl = object["user"]["photo"] as! String
-//                    let dic = ["user":userName ,"photo":photoUrl,"score":String(object["score"]) ]
-//              self.rankArray.append(dic)
-//            };
-//        self.tableView.reloadData()
         };
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     func getNewRank(){
         let qureyRank = PFQuery(className:"Rank");
         qureyRank.orderByDescending("score")
@@ -92,7 +77,6 @@ class RankTableViewController: UITableViewController {
                     (request:NSURLRequest,response:NSHTTPURLResponse?, error:NSError!) -> Void in
                    NSLog("error:%@",error)
                 })
-            
         cell.rankName.text = rankData["user"]
         cell.totalScore.text = rankData["score"]
         cell.rankSeq.text = String(indexPath.row + 1)

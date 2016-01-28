@@ -9,6 +9,33 @@
 import UIKit
 
 class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+    @IBOutlet weak var phaseInfoConst: NSLayoutConstraint!
+    @IBOutlet weak var phaseInfoLabel: UILabel!
+    @IBAction func phaseInfo(sender: UIButton) {
+    if
+        phaseInfoConst.constant == 0
+    {
+        phaseInfoConst.constant = 42
+    }
+    else
+    {
+       phaseInfoConst.constant = 0
+    }
+    UIView.animateWithDuration(0.3, animations: { () -> Void in
+        self.view.layoutIfNeeded()
+    })
+    if
+      attackValue < 0
+    {
+        phaseInfoLabel.text = "(戰鬥獲得分數增加50%)"
+        phaseInfoLabel.textColor = UIColor.redColor()
+    }
+    else
+    {
+        phaseInfoLabel.text = "(戰力增加20%)"
+        phaseInfoLabel.textColor = UIColor.blueColor()
+    }
+    }
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var fightButton: UIButton!
     @IBOutlet weak var battleTitleLabel: UILabel!
@@ -16,9 +43,7 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
     @IBOutlet weak var defensePhase: UILabel!
     @IBOutlet weak var defense: UIPickerView!
     @IBOutlet weak var enemyRoleLabel: UILabel!
-    @IBOutlet weak var myAppe: UILabel!
-    @IBOutlet weak var myRole: UILabel!
-    @IBOutlet weak var myBattleValue: UILabel!
+
     
     @IBOutlet weak var battleView: UIView!
     @IBOutlet weak var enemyPhase: UILabel!
@@ -42,6 +67,8 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         fightButton.layer.cornerRadius = fightButton.layer.bounds.size.width/10
         battleTitleLabel.text = battleType
         battleView.hidden = true
+        battleView.layer.borderWidth = 1
+        battleView.layer.borderColor =  UIColor.grayColor().CGColor
         fightButton.hidden = true
         if
             battleType == "防禦"
@@ -63,11 +90,19 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         {
             let battleData = HomeViewController.getBattleValue(0,roleCount:0,lucknumber:luckyNumber,roleArray:defenseRoleData,appearray:defenseAppeData)
             defensePhase.text = battleData.phase
+            if
+                battleData.battleValue < 0
+            {
+            defensePhase.textColor = UIColor.redColor()
+            }
+            else
+            {
+            defensePhase.textColor = UIColor.blueColor()
+            }
             defenseBattleValue.text = String(abs(battleData.battleValue))
             attackValue = battleData.battleValue
 
         }
-        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
@@ -81,9 +116,9 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
     @IBAction func searchEnemy(sender: UIButton) {
         battleView.hidden = false
         fightButton.hidden = false
-        myAppe.text = defenseAppeData[defense.selectedRowInComponent(0)].nameProperty
-        myRole.text = defenseRoleData[defense.selectedRowInComponent(1)].nameProperty
-        myBattleValue.text = String(abs(attackValue))
+//        myAppe.text = defenseAppeData[defense.selectedRowInComponent(0)].nameProperty
+//        myRole.text = defenseRoleData[defense.selectedRowInComponent(1)].nameProperty
+//        myBattleValue.text = String(abs(attackValue))
         let enemyAppeArray = randomAppeData.shuffle();
         let enemyRoleArray = randomRoleData.shuffle();
         enemyAppe = enemyAppeArray[0];
@@ -94,10 +129,12 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
             enemyBattleValue > 0
         {
         enemyPhase.text = "正義"
+        enemyPhase.textColor = UIColor.blueColor()
         }
         else
         {
         enemyPhase.text = "邪惡"
+        enemyPhase.textColor = UIColor.redColor()
         }
         sender.setTitle("再次搜索敵人", forState: UIControlState.Normal)
         
@@ -164,6 +201,16 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         }
         let battleData = HomeViewController.getBattleValue(defense.selectedRowInComponent(0),roleCount:defense.selectedRowInComponent(1),lucknumber:luckyNumber,roleArray:defenseRoleData,appearray:defenseAppeData)
         defensePhase.text = battleData.phase
+        if
+            battleData.battleValue < 0
+        {
+            defensePhase.textColor = UIColor.redColor()
+        }
+        else
+        {
+            defensePhase.textColor = UIColor.blueColor()
+        }
+
         defenseBattleValue.text = String(abs(battleData.battleValue))
         attackValue = battleData.battleValue
         
