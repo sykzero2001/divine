@@ -262,6 +262,18 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                     //                SVProgressHUD.dismiss()
                 }
                 }
+                let qureyuserNovel = PFQuery(className:"UserNovel")
+                qureyuserNovel.isEqual("user")
+                qureyuserNovel.whereKey("user", equalTo: self.currentUser!)
+                qureyuserNovel.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
+                    if
+                        object == nil
+                    {
+                        object!["novelopen"] = false
+                        object?.saveEventually()
+                    }
+                }
+            
             }
                 
         }
