@@ -97,6 +97,8 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let topImage = UIImageView.init(image: UIImage(named: "刀劍"))
+        self.navigationController?.navigationBar.topItem?.titleView = topImage
         startDivine.layer.cornerRadius = startDivine.layer.bounds.size.width/10
         startBattle.layer.cornerRadius = startBattle.layer.bounds.size.width/10
         defenseConst.constant = 0
@@ -262,20 +264,21 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                     //                SVProgressHUD.dismiss()
                 }
                 }
-                let qureyuserNovel = PFQuery(className:"UserNovel")
-                qureyuserNovel.isEqual("user")
-                qureyuserNovel.whereKey("user", equalTo: self.currentUser!)
-                qureyuserNovel.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
-                    if
-                        object == nil
-                    {
-                        object!["novelopen"] = false
-                        object?.saveEventually()
-                    }
-                }
-            
-            }
                 
+            }
+            let qureyuserNovel = PFQuery(className:"UserNovel")
+            qureyuserNovel.isEqual("user")
+            qureyuserNovel.whereKey("user", equalTo: self.currentUser!)
+            qureyuserNovel.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
+                if
+                    object != nil
+                {
+                    object!["novelopen"] = false
+                    object?.saveEventually()
+                }
+            }
+
+            
         }
         
         //計算戰力

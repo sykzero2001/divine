@@ -85,6 +85,10 @@ class RankTableViewController: UITableViewController {
         {
          cell.backgroundColor = UIColor.yellowColor()
         }
+        else
+        {
+            cell.backgroundColor = UIColor.whiteColor()
+        }
         }
         
         return cell

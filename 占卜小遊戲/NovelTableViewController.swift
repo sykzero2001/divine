@@ -10,11 +10,25 @@ import UIKit
 
 class NovelTableViewController: UITableViewController {
 var novelSeq = 0
+var totalSeq = 0
 var qureyuserNovelData:PFObject?
 var currentUser:PFUser?
 var novelDataArray = [Novel]()
     @IBAction func infoButton(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "說明", message: "每天獲得十場勝利,即可解鎖一篇小說！", preferredStyle: .Alert)
+        var messageStr = ""
+        if
+            self.novelSeq > 0 && self.totalSeq > 0
+        {
+//        var messageStr1 = "每天獲得十場勝利,即可解鎖一篇小說！目前共解鎖:"
+//        var messageStr2 =  messageStr1 +
+        let messageStr1 = "每天獲得十場勝利,即可解鎖一篇小說！\n目前共解鎖:" + String(novelSeq) + "/"
+        messageStr = messageStr1 + String(totalSeq)
+        }
+        else
+        {
+        messageStr = "每天獲得十場勝利,即可解鎖一篇小說！"
+        }
+        let alertController = UIAlertController(title: "說明", message: messageStr, preferredStyle: .Alert)
         
         // Create the actions
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
@@ -73,7 +87,13 @@ var novelDataArray = [Novel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser = PFUser.currentUser()
-
+        let query = PFQuery(className:"Novel")
+        query.countObjectsInBackgroundWithBlock {
+            (count: Int32, error: NSError?) -> Void in
+            if error == nil {
+                self.totalSeq = Int(count)
+             }
+        }
       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
