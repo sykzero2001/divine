@@ -166,8 +166,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LjL-Yx-977">
-                                <rect key="frame" x="20" y="64" width="560" height="492"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LjL-Yx-977">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -812,19 +812,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWa-b0-odJ">
-                                <rect key="frame" x="240" y="430" width="120" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="cr6-oX-WnG"/>
-                                </constraints>
-                                <state key="normal" title="返回決鬥場">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="back:" destination="JLR-uh-R1a" eventType="touchUpInside" id="7k2-xm-RWY"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ｖ.S." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jmf-Fs-ahE">
                                 <rect key="frame" x="263" y="102.5" width="73" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
@@ -965,6 +952,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWa-b0-odJ">
+                                <rect key="frame" x="240" y="500" width="120" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="cr6-oX-WnG"/>
+                                </constraints>
+                                <state key="normal" title="返回決鬥場">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back:" destination="JLR-uh-R1a" eventType="touchUpInside" id="7k2-xm-RWY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -977,6 +977,7 @@
                             <constraint firstItem="LzN-Fy-zgy" firstAttribute="leading" secondItem="eX6-Sd-jB6" secondAttribute="leading" id="8fb-Zz-ZcU"/>
                             <constraint firstAttribute="trailing" secondItem="Z7Y-AX-mEC" secondAttribute="trailing" id="BjG-MC-iWt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SoF-u6-LqG" secondAttribute="trailing" constant="5" id="BwW-f5-FzJ"/>
+                            <constraint firstItem="DYO-Qv-BO7" firstAttribute="top" secondItem="RWa-b0-odJ" secondAttribute="bottom" constant="20" id="CR1-sQ-2Vh"/>
                             <constraint firstItem="6e6-HJ-waV" firstAttribute="centerY" secondItem="LzN-Fy-zgy" secondAttribute="centerY" id="GlG-Ff-v4L"/>
                             <constraint firstItem="SoF-u6-LqG" firstAttribute="top" secondItem="HGR-E3-hyx" secondAttribute="bottom" constant="8" id="Inn-ym-wkn"/>
                             <constraint firstItem="eX6-Sd-jB6" firstAttribute="top" secondItem="rMe-Xi-lQ9" secondAttribute="bottom" constant="50" id="IwD-SN-hW1"/>
@@ -984,7 +985,6 @@
                             <constraint firstItem="DYO-Qv-BO7" firstAttribute="leading" secondItem="5HN-2U-80G" secondAttribute="leadingMargin" id="OlE-yx-jyI"/>
                             <constraint firstItem="6JU-rN-3U4" firstAttribute="leading" secondItem="Wyi-Xu-faU" secondAttribute="trailing" constant="8" id="Wzv-TI-HEV"/>
                             <constraint firstItem="RWa-b0-odJ" firstAttribute="centerX" secondItem="5HN-2U-80G" secondAttribute="centerX" id="XLw-L5-NTP"/>
-                            <constraint firstItem="RWa-b0-odJ" firstAttribute="top" secondItem="6JU-rN-3U4" secondAttribute="bottom" constant="41" id="YCi-Li-CxH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DYO-Qv-BO7" secondAttribute="trailing" id="ZYZ-YM-QmF"/>
                             <constraint firstItem="HGR-E3-hyx" firstAttribute="top" secondItem="5HN-2U-80G" secondAttribute="topMargin" constant="20" id="gyV-M1-J2g"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Z7Y-AX-mEC" secondAttribute="bottom" id="hXy-Qf-syW"/>
