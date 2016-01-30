@@ -99,6 +99,8 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         super.viewDidLoad()
         let topImage = UIImageView.init(image: UIImage(named: "刀劍"))
         self.navigationController?.navigationBar.topItem?.titleView = topImage
+        colorView.layer.borderWidth = 1
+        colorView.layer.borderColor = UIColor.whiteColor().CGColor
         startDivine.layer.cornerRadius = startDivine.layer.bounds.size.width/10
         startBattle.layer.cornerRadius = startBattle.layer.bounds.size.width/10
         defenseConst.constant = 0
@@ -116,9 +118,6 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         adView.adUnitID = "ca-app-pub-2545255102687972/6493325241"
         adView.rootViewController = self
         adView.loadRequest(GADRequest.init())
-//        self.view.window?.rootViewController = CJPAdController.sharedInstance()
-//        self.view.window?.rootViewController = CJPAdController.sharedInstance()
-//        self.view.window?.rootViewController = CJPAdController.sharedInstance()
     }
     override func viewWillAppear(animated: Bool) {
         currentUser = PFUser.currentUser()
