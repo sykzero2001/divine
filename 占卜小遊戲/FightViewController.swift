@@ -34,6 +34,7 @@ class FightViewController: UIViewController {
     var fightResult = [String:String]();
     var winCount = 0;
     var loseCount = 0;
+    var winRate = Float();
     var everyDayWinCountData = [PFObject]()
     var everyDayWinCount = 0
     
@@ -62,6 +63,7 @@ class FightViewController: UIViewController {
         totalScore = userScoreData!["score"] as! Int
         winCount = userScoreData!["win"] as! Int
         loseCount = userScoreData!["lose"] as! Int
+        winRate = userScoreData!["winrate"] as! Float
         enemyAppeLabel.text = enemyAppeData.nameProperty
         enemyRoleLabel.text = enemyRoleData.nameProperty
         enemyFightValueLabel.text =  String(abs(enemyFightValue))
@@ -204,6 +206,18 @@ class FightViewController: UIViewController {
         userScoreData!["score"] = Int(fightResult["目前總分"]!)
         userScoreData!["win"] = winCount
         userScoreData!["lose"] = loseCount
+        if
+          winCount == 0 && loseCount == 0
+        {
+          userScoreData!["winrate"] = 0
+        }
+        else
+        {
+        let tmpTotalCount = Float(loseCount + winCount)
+        let tmpWinCount = Float(winCount)
+        let tmp = tmpWinCount / tmpTotalCount
+         userScoreData!["winrate"] = tmp
+        }
         userScoreData!.saveEventually()
         if
             everyDayWinCount > 10

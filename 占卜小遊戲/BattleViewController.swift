@@ -15,26 +15,26 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
     if
         phaseInfoConst.constant == 0
     {
-        phaseInfoConst.constant = 42
+        phaseInfoConst.constant = 45
     }
     else
     {
        phaseInfoConst.constant = 0
     }
+        if
+            attackValue < 0
+        {
+            phaseInfoLabel.text = "(戰鬥獲得分數增加50%)"
+            phaseInfoLabel.textColor = UIColor.redColor()
+        }
+        else
+        {
+            phaseInfoLabel.text = "(戰力增加20%)"
+            phaseInfoLabel.textColor = UIColor.blueColor()
+        }
     UIView.animateWithDuration(0.3, animations: { () -> Void in
         self.view.layoutIfNeeded()
     })
-    if
-      attackValue < 0
-    {
-        phaseInfoLabel.text = "(戰鬥獲得分數增加50%)"
-        phaseInfoLabel.textColor = UIColor.redColor()
-    }
-    else
-    {
-        phaseInfoLabel.text = "(戰力增加20%)"
-        phaseInfoLabel.textColor = UIColor.blueColor()
-    }
     }
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var fightButton: UIButton!
@@ -70,6 +70,7 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         battleView.layer.borderWidth = 1
         battleView.layer.borderColor =  UIColor.grayColor().CGColor
         fightButton.hidden = true
+        
         if
             battleType == "防禦"
         {
@@ -213,6 +214,18 @@ class BattleViewController: UIViewController,UIPickerViewDataSource,UIPickerView
 
         defenseBattleValue.text = String(abs(battleData.battleValue))
         attackValue = battleData.battleValue
+        if
+            attackValue < 0
+        {
+            phaseInfoLabel.text = "(戰鬥獲得分數增加50%)"
+            phaseInfoLabel.textColor = UIColor.redColor()
+        }
+        else
+        {
+            phaseInfoLabel.text = "(戰力增加20%)"
+            phaseInfoLabel.textColor = UIColor.blueColor()
+        }
+
         
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

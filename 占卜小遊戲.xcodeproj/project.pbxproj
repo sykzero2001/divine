@@ -15,6 +15,8 @@
 		DE20A8511BF06E7800B7D0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE20A84F1BF06E7800B7D0A3 /* LaunchScreen.storyboard */; };
 		DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8841F21BF5AEFC00936610 /* RoleSetting.swift */; };
 		DE9DF2791C351B7300415627 /* RankTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9DF2781C351B7300415627 /* RankTableViewController.swift */; };
+		DE9FE4401C5CECBA00DB72A9 /* TotalRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FE43F1C5CECBA00DB72A9 /* TotalRankViewController.swift */; };
+		DE9FE4421C5CF46900DB72A9 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FE4411C5CF46900DB72A9 /* Rank.swift */; };
 		DED932691C5A41940074DA0D /* NovelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED932681C5A41940074DA0D /* NovelTableViewController.swift */; };
 		DED9326F1C5A6F9A0074DA0D /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED9326E1C5A6F9A0074DA0D /* Novel.swift */; };
 		DED932711C5A7ED10074DA0D /* NovelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED932701C5A7ED10074DA0D /* NovelContentViewController.swift */; };
@@ -34,7 +36,7 @@
 /* Begin PBXFileReference section */
 		00995A19F62B07C6204FD49C /* libPods-占卜小遊戲.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-占卜小遊戲.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB11784FB167C8998E4B2BC2 /* Pods-占卜小遊戲.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-占卜小遊戲.release.xcconfig"; path = "Pods/Target Support Files/Pods-占卜小遊戲/Pods-占卜小遊戲.release.xcconfig"; sourceTree = "<group>"; };
-		DE20A8431BF06E7800B7D0A3 /* 占卜小遊戲.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "占卜小遊戲.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE20A8431BF06E7800B7D0A3 /* 占卜文字戰鬥.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "占卜文字戰鬥.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE20A8461BF06E7800B7D0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE20A8481BF06E7800B7D0A3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DE20A84B1BF06E7800B7D0A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		DE8841C81BF242F600936610 /* ParseObjectC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseObjectC.h; sourceTree = "<group>"; };
 		DE8841F21BF5AEFC00936610 /* RoleSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleSetting.swift; sourceTree = "<group>"; };
 		DE9DF2781C351B7300415627 /* RankTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewController.swift; sourceTree = "<group>"; };
+		DE9FE43F1C5CECBA00DB72A9 /* TotalRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalRankViewController.swift; sourceTree = "<group>"; };
+		DE9FE4411C5CF46900DB72A9 /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		DED932681C5A41940074DA0D /* NovelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovelTableViewController.swift; sourceTree = "<group>"; };
 		DED9326E1C5A6F9A0074DA0D /* Novel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
 		DED932701C5A7ED10074DA0D /* NovelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovelContentViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +99,7 @@
 		DE20A8441BF06E7800B7D0A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DE20A8431BF06E7800B7D0A3 /* 占卜小遊戲.app */,
+				DE20A8431BF06E7800B7D0A3 /* 占卜文字戰鬥.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +117,7 @@
 				DE8841C71BF242F500936610 /* 占卜小遊戲-Bridging-Header.h */,
 				DE8841F21BF5AEFC00936610 /* RoleSetting.swift */,
 				DED9326E1C5A6F9A0074DA0D /* Novel.swift */,
+				DE9FE4411C5CF46900DB72A9 /* Rank.swift */,
 				DEE5AAA71C11917F00E47EB5 /* BattleViewController.swift */,
 				DEE5AACA1C16C36A00E47EB5 /* GameData.xcdatamodeld */,
 				DEE5AACD1C187DA800E47EB5 /* FightViewController.swift */,
@@ -127,6 +132,7 @@
 				DEEBA11B1C5770FE0024493B /* TabViewController.swift */,
 				DED932681C5A41940074DA0D /* NovelTableViewController.swift */,
 				DED932701C5A7ED10074DA0D /* NovelContentViewController.swift */,
+				DE9FE43F1C5CECBA00DB72A9 /* TotalRankViewController.swift */,
 			);
 			path = "占卜小遊戲";
 			sourceTree = "<group>";
@@ -143,9 +149,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DE20A8421BF06E7800B7D0A3 /* 占卜小遊戲 */ = {
+		DE20A8421BF06E7800B7D0A3 /* 占卜文字戰鬥 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DE20A8551BF06E7800B7D0A3 /* Build configuration list for PBXNativeTarget "占卜小遊戲" */;
+			buildConfigurationList = DE20A8551BF06E7800B7D0A3 /* Build configuration list for PBXNativeTarget "占卜文字戰鬥" */;
 			buildPhases = (
 				F6C57DD0D029993F61E171E2 /* Check Pods Manifest.lock */,
 				DE20A83F1BF06E7800B7D0A3 /* Sources */,
@@ -158,9 +164,9 @@
 			);
 			dependencies = (
 			);
-			name = "占卜小遊戲";
+			name = "占卜文字戰鬥";
 			productName = "占卜小遊戲";
-			productReference = DE20A8431BF06E7800B7D0A3 /* 占卜小遊戲.app */;
+			productReference = DE20A8431BF06E7800B7D0A3 /* 占卜文字戰鬥.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -192,7 +198,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DE20A8421BF06E7800B7D0A3 /* 占卜小遊戲 */,
+				DE20A8421BF06E7800B7D0A3 /* 占卜文字戰鬥 */,
 			);
 		};
 /* End PBXProject section */
@@ -264,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE9FE4421C5CF46900DB72A9 /* Rank.swift in Sources */,
 				DEE5AAD01C2299C700E47EB5 /* LoginViewController.swift in Sources */,
 				DEEBA1111C3BB6150024493B /* RankTableViewCell.swift in Sources */,
 				DEE5AAA81C11917F00E47EB5 /* BattleViewController.swift in Sources */,
@@ -273,6 +280,7 @@
 				DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */,
 				DE20A8471BF06E7800B7D0A3 /* AppDelegate.swift in Sources */,
 				DEEBA1141C48EB660024493B /* TeachViewController1.swift in Sources */,
+				DE9FE4401C5CECBA00DB72A9 /* TotalRankViewController.swift in Sources */,
 				DED932691C5A41940074DA0D /* NovelTableViewController.swift in Sources */,
 				DED9326F1C5A6F9A0074DA0D /* Novel.swift in Sources */,
 				DEE5AACE1C187DA800E47EB5 /* FightViewController.swift in Sources */,
@@ -438,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DE20A8551BF06E7800B7D0A3 /* Build configuration list for PBXNativeTarget "占卜小遊戲" */ = {
+		DE20A8551BF06E7800B7D0A3 /* Build configuration list for PBXNativeTarget "占卜文字戰鬥" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE20A8561BF06E7800B7D0A3 /* Debug */,

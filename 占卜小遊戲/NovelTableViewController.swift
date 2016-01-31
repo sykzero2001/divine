@@ -21,7 +21,7 @@ var novelDataArray = [Novel]()
         {
 //        var messageStr1 = "每天獲得十場勝利,即可解鎖一篇小說！目前共解鎖:"
 //        var messageStr2 =  messageStr1 +
-        let messageStr1 = "每天獲得十場勝利,即可解鎖一篇小說！\n目前共解鎖:" + String(novelSeq) + "/"
+        let messageStr1 = "每天獲得十場勝利,即可解鎖一篇小說！\n每解鎖十篇小說可以多一個角色組合！\n目前共解鎖:" + String(novelSeq) + "/"
         messageStr = messageStr1 + String(totalSeq)
         }
         else
@@ -60,9 +60,24 @@ var novelDataArray = [Novel]()
                 {
                     self.novelSeq = self.novelSeq + 1
                     self.qureyuserNovelData!["novelopen"] = true
+                    if
+                        self.novelSeq != 0  && self.novelSeq % 10 == 0
+                    {
+                    let query = PFUser.query()
+                    query?.isEqual(self.currentUser!)
+                        query?.findObjectsInBackgroundWithBlock{ (userObjects:[PFObject]?, errors:NSError?) -> Void in
+                            for userobject in userObjects!
+                            {
+                               userobject["rolecount"] = userobject["rolecount"] as! Int + 1
+                                userobject.saveEventually()
+                            }
+                    }
+                    }
+                
                 }
                 self.qureyuserNovelData!["novelseq"] = self.novelSeq
                 self.qureyuserNovelData!.saveEventually()
+                SVProgressHUD.dismiss()
                 //讀取小說內容
                 let qureyNovel = PFQuery(className:"Novel")
                 qureyNovel.orderByAscending("seq")
@@ -108,35 +123,34 @@ var novelDataArray = [Novel]()
             let qureyuserNovel = PFQuery(className:"UserNovel")
             qureyuserNovel.isEqual("user")
             qureyuserNovel.whereKey("user", equalTo: currentUser!)
-            qureyuserNovel.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
+            SVProgressHUD.show()
+            var userNovelSet:PFObject?
+//            let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            do {
+//                delegate.window?.userInteractionEnabled = false
+                userNovelSet = try qureyuserNovel.getFirstObject();
+            } catch _ {
+                userNovelSet = nil
+            }
                 //若是第一次需建立小說設定檔
                 if
-                    object == nil
+                    userNovelSet == nil
                 {
                     self.qureyuserNovelData  = PFObject(className:"UserNovel")
                     self.qureyuserNovelData!["user"] = self.currentUser
                     self.qureyuserNovelData!["novelseq"] = 0
                     self.qureyuserNovelData!["novelopen"] = false
                     self.novelSeq = 0
-                    self.qureyuserNovelData!.saveInBackgroundWithBlock {
-                        (success: Bool, error: NSError?) -> Void in
-                        if (success) {
-                            // The object has been saved.
-                        } else {
-                            // There was a problem, check error.description
-                        }
-                        //                SVProgressHUD.dismiss()
-                    }
+                    self.qureyuserNovelData!.saveEventually()
                 }
                     //若不是則直接讀取小說設定檔
                 else
                 {
-                    self.qureyuserNovelData = object!
-                    self.novelSeq = object!["novelseq"] as! Int
+                    self.qureyuserNovelData = userNovelSet!
+                    self.novelSeq = userNovelSet!["novelseq"] as! Int
                 }
                 self.getUserPlayerRoleData()
             }
-        }
         
     }
     override func didReceiveMemoryWarning() {

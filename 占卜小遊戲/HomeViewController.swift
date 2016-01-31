@@ -78,13 +78,6 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                             self.luckyNum.text = String(object["luckynumber"]);
 
                         }
-//                    let qureyAppellation = PFQuery(className:"Appellation");
-//                    self.getParseData(qureyAppellation,name:"adjective",battleValue:"value",numberCompient:0);
-//                        let qureyRole = PFQuery(className:"Role");
-//                    self.getParseData(qureyRole,name:"roleName",battleValue:"battleValue",numberCompient:1);
-//                        self.startConst.constant = 0
-//                        self.defenseConst.constant = 30
-//                        self.attackConst.constant = 30
                     }
                 }
                 let qureyAppellation = PFQuery(className:"Appellation");
@@ -178,7 +171,17 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         pickerAppeData.removeAll();
         var tmpAdd = totalAppeData.shuffle();
         var tmpRoleAdd = totalRoleData.shuffle();
-        for var i = 0;i <= 2;i++
+        let query = PFUser.query()
+        query?.isEqual(currentUser!)
+        SVProgressHUD.show()
+        var userData = PFUser()
+        do {
+            userData = try query?.getFirstObject()as! PFUser;
+        } catch _ {
+            userData = PFUser()
+        }
+        SVProgressHUD.dismiss()
+        for var i = 0;i < userData["rolecount"] as! Int;i++
         {
         pickerAppeData.append(tmpAdd[0]);
         pickerRoleData.append(tmpRoleAdd[0]);

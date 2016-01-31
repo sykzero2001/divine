@@ -9,20 +9,40 @@
 import UIKit
 
 class RankTableViewController: UITableViewController {
-    var rankArray = [[String:String]]()
+    var rankArray = [Rank]()
     var currentUserId = ""
+    var rankType = "total"
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getRankType:", name: "RankType", object: nil)
         tableView.allowsSelection = false
         let nib = UINib.init(nibName: "RankTableViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "RankCell")
         getNewRank()
         currentUserId = ((PFUser.currentUser()?.objectId)! as String)
         };
+    @objc func getRankType(notification: NSNotification){
+        rankType = notification.userInfo!["type"] as! String;
+//        rankType = dic["Type"] as! String
+        self.getNewRank()
+    }
     func getNewRank(){
-        let qureyRank = PFQuery(className:"Rank");
-        qureyRank.orderByDescending("score")
+        let qureyRank = PFQuery(className:"Rank")
         qureyRank.includeKey("user")
+        qureyRank.orderByDescending("score")
+        switch
+            rankType
+        {
+            case "total":
+            qureyRank.orderByDescending("score")
+            case "winCount":
+            qureyRank.orderByDescending("win")
+            case "winRate":
+            qureyRank.orderByDescending("winrate")
+            default:
+            qureyRank.orderByDescending("score")
+        }
+        
         qureyRank.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, errors:NSError?) -> Void in
             self.rankArray.removeAll()
             for object in objects!{
@@ -31,8 +51,9 @@ class RankTableViewController: UITableViewController {
                 let userId = user.objectId! as String
 //                let userName = String(userNameTmp)
                 let photoUrl = object["user"]["photo"] as! String
-                let dic = ["user":userName ,"photo":photoUrl,"score":String(object["score"]),"userId":userId ]
-                self.rankArray.append(dic)
+//                let dic = ["user":userName ,"photo":photoUrl,"score":String(object["score"]),"win":String(object["win"]),"lose":String(object["lose"]),"userId":userId ]
+                let ranlInstance = Rank.init(username: userName, photoUrl: photoUrl, score: object["score"] as! Int, win: object["win"] as! Int, winRate: object["winrate"] as! Float, userId: userId)
+                self.rankArray.append(ranlInstance)
             };
             self.tableView.reloadData()
         }
@@ -67,7 +88,7 @@ class RankTableViewController: UITableViewController {
         {
          let rankData = rankArray[indexPath.row]
 //        let photoUrl = NSURL.fileURLWithPath(rankData["photo"]!)
-            let photoUrl = NSURL(string:rankData["photo"]!)! as NSURL
+            let photoUrl = NSURL(string:rankData.photoUrlValue)! as NSURL
             let imageRequest = NSMutableURLRequest.init(URL: photoUrl, cachePolicy:NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 30.0)
             
             cell.rankImage.setImageWithURLRequest(imageRequest, placeholderImage:nil,success:{ (request:NSURLRequest,response:NSHTTPURLResponse?, image:UIImage) -> Void in
@@ -77,11 +98,22 @@ class RankTableViewController: UITableViewController {
                     (request:NSURLRequest,response:NSHTTPURLResponse?, error:NSError!) -> Void in
                    NSLog("error:%@",error)
                 })
-        cell.rankName.text = rankData["user"]
-        cell.totalScore.text = rankData["score"]
+        cell.rankName.text = rankData.usernameValue
+        switch rankType
+            {
+            case "total":
+                 cell.totalScore.text = String(rankData.scoreValue)
+            case "winCount":
+                 cell.totalScore.text = String(rankData.winValue)
+            case "winRate":
+                 cell.totalScore.text = String(rankData.winRateValue * 100.0) + "%"
+            default:
+                cell.totalScore.text = String(rankData.scoreValue)
+            }
+//        cell.totalScore.text = String(rankData.scoreValue)
         cell.rankSeq.text = String(indexPath.row + 1)
         if
-            currentUserId == rankData["userId"]
+            currentUserId == rankData.userIdValue
         {
          cell.backgroundColor = UIColor.yellowColor()
         }
