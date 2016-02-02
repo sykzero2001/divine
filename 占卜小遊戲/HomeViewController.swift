@@ -56,7 +56,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                         let dateZoneStr = formatter.stringFromDate(date);
                         if
                             //測試
-                            dateZoneStr != lastTimeZoneStr
+                            dateZoneStr <= lastTimeZoneStr
                         {
                             self.refresh = "N"
                         }
