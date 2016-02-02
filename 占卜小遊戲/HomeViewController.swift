@@ -55,7 +55,8 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
                         let lastTimeZoneStr = formatter.stringFromDate(updateTime);
                         let dateZoneStr = formatter.stringFromDate(date);
                         if
-                            dateZoneStr <= lastTimeZoneStr
+                            //測試
+                            dateZoneStr != lastTimeZoneStr
                         {
                             self.refresh = "N"
                         }
@@ -172,11 +173,10 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         var tmpAdd = totalAppeData.shuffle();
         var tmpRoleAdd = totalRoleData.shuffle();
         let query = PFUser.query()
-        query?.isEqual(currentUser!)
         SVProgressHUD.show()
         var userData = PFUser()
         do {
-            userData = try query?.getFirstObject()as! PFUser;
+            userData = try query!.getObjectWithId(currentUser!.objectId!) as! PFUser
         } catch _ {
             userData = PFUser()
         }
@@ -213,8 +213,13 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         qureyPlayerRole.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, errors:NSError?) -> Void in
             //若是第一次占卜需要建立角色設定檔
             if
-                objects?.count == 0
+                objects?.count != self.pickerRoleData.count
             {
+                for
+                    object in objects!
+                {
+                     object.deleteEventually()
+                }
                 for var i = 0 ;i < self.pickerAppeData.count; i++
                {
                 let playerRoleData  = PFObject(className:"PlayerRole")

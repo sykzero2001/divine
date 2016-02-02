@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PST-f1-73s">
-                                <rect key="frame" x="200" y="10" width="200" height="21"/>
+                                <rect key="frame" x="200" y="40" width="200" height="29"/>
                                 <segments>
                                     <segment title="總分排行"/>
                                     <segment title="勝場排行"/>
@@ -29,7 +29,7 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRG-QP-K4C">
-                                <rect key="frame" x="20" y="50" width="560" height="471"/>
+                                <rect key="frame" x="20" y="88" width="560" height="433"/>
                                 <connections>
                                     <segue destination="rZd-SK-rL1" kind="embed" id="274-3B-rOP"/>
                                 </connections>
@@ -42,9 +42,8 @@
                             <constraint firstItem="FUL-nJ-pmD" firstAttribute="top" secondItem="FRG-QP-K4C" secondAttribute="bottom" constant="30" id="7g4-bb-Psn"/>
                             <constraint firstItem="FRG-QP-K4C" firstAttribute="leading" secondItem="YzU-Ib-TD6" secondAttribute="leading" constant="20" id="8NL-Vj-M4a"/>
                             <constraint firstItem="FRG-QP-K4C" firstAttribute="top" secondItem="PST-f1-73s" secondAttribute="bottom" constant="20" id="Fnk-kn-B2n"/>
-                            <constraint firstItem="PST-f1-73s" firstAttribute="top" secondItem="YzU-Ib-TD6" secondAttribute="topMargin" constant="10" id="jhK-sR-YMY"/>
+                            <constraint firstItem="PST-f1-73s" firstAttribute="top" secondItem="YzU-Ib-TD6" secondAttribute="topMargin" constant="40" id="jhK-sR-YMY"/>
                             <constraint firstItem="FRG-QP-K4C" firstAttribute="centerX" secondItem="YzU-Ib-TD6" secondAttribute="centerX" id="oaD-ue-Z1B"/>
-                            <constraint firstItem="FRG-QP-K4C" firstAttribute="top" secondItem="MkM-VV-HzX" secondAttribute="bottom" constant="30" id="zek-yj-dZS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="排行榜" image="排行榜" id="ZXo-hY-R3E"/>
@@ -58,7 +57,7 @@
             <objects>
                 <tableViewController id="rZd-SK-rL1" customClass="RankTableViewController" customModule="占卜文字戰鬥" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BYV-08-8ky">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="471"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="433"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="LHx-Pq-v1v">
@@ -943,11 +942,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="戰場" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-AX-mEC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="戰場" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-AX-mEC">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWa-b0-odJ">
-                                <rect key="frame" x="240" y="500" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWa-b0-odJ">
+                                <rect key="frame" x="240" y="420.5" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="cr6-oX-WnG"/>
@@ -1173,8 +1172,8 @@
                                     <constraint firstAttribute="bottom" secondItem="ARS-H0-jb6" secondAttribute="bottom" id="yzB-Si-hB2"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vu8-YG-FOG">
-                                <rect key="frame" x="200" y="345" width="162.5" height="20.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vu8-YG-FOG">
+                                <rect key="frame" x="25" y="360" width="162.5" height="20.5"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KvZ-r0-ydz">
                                         <rect key="frame" x="0.0" y="0.0" width="162.5" height="20.5"/>
@@ -1221,31 +1220,43 @@
                             <constraint firstAttribute="trailingMargin" secondItem="SoF-u6-LqG" secondAttribute="trailing" constant="5" id="BwW-f5-FzJ"/>
                             <constraint firstItem="DYO-Qv-BO7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RWa-b0-odJ" secondAttribute="bottom" constant="5" id="CR1-sQ-2Vh"/>
                             <constraint firstItem="Vu8-YG-FOG" firstAttribute="leading" secondItem="pUP-5Z-Kng" secondAttribute="leading" id="DVx-rw-HfV"/>
+                            <constraint firstItem="Z7Y-AX-mEC" firstAttribute="leading" secondItem="5HN-2U-80G" secondAttribute="leadingMargin" id="EY1-G8-iWG"/>
                             <constraint firstItem="SoF-u6-LqG" firstAttribute="top" secondItem="HGR-E3-hyx" secondAttribute="bottom" constant="8" id="Inn-ym-wkn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rMe-Xi-lQ9" secondAttribute="trailing" constant="5" id="JKg-pa-dwH"/>
                             <constraint firstItem="DYO-Qv-BO7" firstAttribute="leading" secondItem="5HN-2U-80G" secondAttribute="leadingMargin" id="OlE-yx-jyI"/>
+                            <constraint firstAttribute="trailing" secondItem="Z7Y-AX-mEC" secondAttribute="trailing" id="Pqy-88-lOn"/>
                             <constraint firstItem="pQc-jB-iJK" firstAttribute="leading" secondItem="rMe-Xi-lQ9" secondAttribute="leading" id="U4t-Cs-WMh"/>
+                            <constraint firstItem="Z7Y-AX-mEC" firstAttribute="top" secondItem="5HN-2U-80G" secondAttribute="topMargin" id="Ubk-ki-zWS"/>
                             <constraint firstItem="RWa-b0-odJ" firstAttribute="centerX" secondItem="5HN-2U-80G" secondAttribute="centerX" id="XLw-L5-NTP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DYO-Qv-BO7" secondAttribute="trailing" id="ZYZ-YM-QmF"/>
                             <constraint firstItem="pUP-5Z-Kng" firstAttribute="leading" secondItem="pQc-jB-iJK" secondAttribute="leading" id="f2i-GH-JZB"/>
+                            <constraint firstItem="Z7Y-AX-mEC" firstAttribute="leading" secondItem="5HN-2U-80G" secondAttribute="leading" id="gL6-bu-FNS"/>
                             <constraint firstItem="pQc-jB-iJK" firstAttribute="top" secondItem="rMe-Xi-lQ9" secondAttribute="bottom" constant="50" id="gis-vF-jtw"/>
                             <constraint firstItem="HGR-E3-hyx" firstAttribute="top" secondItem="5HN-2U-80G" secondAttribute="topMargin" constant="20" id="gyV-M1-J2g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Z7Y-AX-mEC" secondAttribute="trailing" id="j9f-YZ-gAo"/>
+                            <constraint firstItem="Z7Y-AX-mEC" firstAttribute="top" secondItem="5HN-2U-80G" secondAttribute="top" id="kfA-w2-T2t"/>
                             <constraint firstItem="Jmf-Fs-ahE" firstAttribute="centerX" secondItem="5HN-2U-80G" secondAttribute="centerX" id="mFO-7X-XNt"/>
                             <constraint firstItem="rMe-Xi-lQ9" firstAttribute="leading" secondItem="5HN-2U-80G" secondAttribute="leadingMargin" constant="5" id="msg-YR-0eK"/>
                             <constraint firstItem="HGR-E3-hyx" firstAttribute="centerX" secondItem="5HN-2U-80G" secondAttribute="centerX" id="opQ-Oq-rw6"/>
                             <constraint firstItem="Vu8-YG-FOG" firstAttribute="top" secondItem="pUP-5Z-Kng" secondAttribute="bottom" constant="34" id="p2V-O2-GNn"/>
+                            <constraint firstItem="kVX-e4-Q2I" firstAttribute="top" secondItem="Z7Y-AX-mEC" secondAttribute="bottom" id="pmP-ZJ-XjZ"/>
                             <constraint firstItem="RWa-b0-odJ" firstAttribute="top" secondItem="Vu8-YG-FOG" secondAttribute="bottom" constant="40" id="qet-UU-MMv"/>
                             <constraint firstItem="Vu8-YG-FOG" firstAttribute="leading" secondItem="5HN-2U-80G" secondAttribute="leadingMargin" constant="5" id="tKz-gv-onx"/>
                             <constraint firstItem="pUP-5Z-Kng" firstAttribute="top" secondItem="pQc-jB-iJK" secondAttribute="bottom" constant="34" id="vyh-DC-Qy1"/>
                             <constraint firstItem="Vu8-YG-FOG" firstAttribute="leading" secondItem="pQc-jB-iJK" secondAttribute="leading" id="yqj-D2-Rr9"/>
+                            <constraint firstItem="kVX-e4-Q2I" firstAttribute="top" secondItem="Z7Y-AX-mEC" secondAttribute="bottom" id="zBI-bA-tic"/>
                             <constraint firstItem="rMe-Xi-lQ9" firstAttribute="top" secondItem="Jmf-Fs-ahE" secondAttribute="bottom" constant="18" id="zg8-EN-eph"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pQc-jB-iJK" secondAttribute="trailing" constant="5" id="zkU-YN-BGg"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="EY1-G8-iWG"/>
+                                <exclude reference="Ubk-ki-zWS"/>
+                                <exclude reference="j9f-YZ-gAo"/>
                                 <exclude reference="8tf-ly-02U"/>
                                 <exclude reference="DVx-rw-HfV"/>
                                 <exclude reference="yqj-D2-Rr9"/>
+                                <exclude reference="zBI-bA-tic"/>
                             </mask>
                         </variation>
                     </view>
