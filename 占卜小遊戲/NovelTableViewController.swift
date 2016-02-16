@@ -51,6 +51,7 @@ var novelDataArray = [Novel]()
             
             if error != nil || object == nil {
                 print("PlayerError")
+                SVProgressHUD.dismiss()
             } else {
                 let todayWinCount = String(object!["wincount"])
                 self.navigationController!.navigationBar.topItem?.title = "每日勝場進度:" + todayWinCount + "/10"

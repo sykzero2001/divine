@@ -10,26 +10,58 @@ import UIKit
 
 class RankTableViewController: UITableViewController {
     var rankArray = [Rank]()
-    var currentUserId = ""
+    var currentUser = PFUser()
     var rankType = "total"
+    var userRankObject:PFObject?
+    var displayPublic = "N"
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "getRankType:", name: "RankType", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "takePublicPermissions:", name: "RankAgreePublic", object: nil)
         tableView.allowsSelection = false
         let nib = UINib.init(nibName: "RankTableViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "RankCell")
+        currentUser = PFUser.currentUser()!
         getNewRank()
-        currentUserId = ((PFUser.currentUser()?.objectId)! as String)
         };
     @objc func getRankType(notification: NSNotification){
         rankType = notification.userInfo!["type"] as! String;
 //        rankType = dic["Type"] as! String
         self.getNewRank()
     }
+    @objc func takePublicPermissions(notification: NSNotification){
+        userRankObject!["public"] = notification.userInfo!["public"] as! Bool;
+        
+        do {
+             try userRankObject?.save();
+        } catch _ {
+        }
+    }
     func getNewRank(){
         let qureyRank = PFQuery(className:"Rank")
         qureyRank.includeKey("user")
         qureyRank.orderByDescending("score")
+        if
+            displayPublic == "N"
+        {
+        displayPublic = "Y"
+        let qureyUserRank =  PFQuery(className:"Rank")
+        qureyUserRank.whereKey("user", equalTo: currentUser)
+        qureyUserRank.getFirstObjectInBackgroundWithBlock { (rankObject:PFObject?, errors:NSError?) -> Void in
+            if
+                rankObject!["public"] as! Bool == false
+            {
+                self.userRankObject = rankObject!
+                let controller = self.storyboard?.instantiateViewControllerWithIdentifier("AgreeViewController")
+                    as! AgreeViewController
+                controller.controller = self as UIViewController
+                self.presentViewController(controller, animated: true, completion: nil)
+            }
+            
+                        }
+        }
+
+        qureyRank.whereKey("public", equalTo: true)
         switch
             rankType
         {
@@ -88,6 +120,9 @@ class RankTableViewController: UITableViewController {
         {
          let rankData = rankArray[indexPath.row]
 //        let photoUrl = NSURL.fileURLWithPath(rankData["photo"]!)
+            if
+                rankData.photoUrlValue != "nil"
+            {
             let photoUrl = NSURL(string:rankData.photoUrlValue)! as NSURL
             let imageRequest = NSMutableURLRequest.init(URL: photoUrl, cachePolicy:NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 30.0)
             
@@ -98,6 +133,11 @@ class RankTableViewController: UITableViewController {
                     (request:NSURLRequest,response:NSHTTPURLResponse?, error:NSError!) -> Void in
                    NSLog("error:%@",error)
                 })
+            }
+            else
+            {
+                cell.rankImage.image = UIImage(named: "nil")
+            }
         cell.rankName.text = rankData.usernameValue
         switch rankType
             {
@@ -113,7 +153,7 @@ class RankTableViewController: UITableViewController {
 //        cell.totalScore.text = String(rankData.scoreValue)
         cell.rankSeq.text = String(indexPath.row + 1)
         if
-            currentUserId == rankData.userIdValue
+            currentUser.objectId == rankData.userIdValue
         {
          cell.backgroundColor = UIColor.yellowColor()
         }

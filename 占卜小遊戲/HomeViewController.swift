@@ -33,6 +33,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     var currentUser:PFUser?
     var refresh = "Y"
     var teachMode = "N"
+    var userRankObject:PFObject?
     func checkUserSet()
     {
     currentUser = PFUser.currentUser()
@@ -91,6 +92,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "takePublicPermissions:", name: "HomeAgreePublic", object: nil)
         let topImage = UIImageView.init(image: UIImage(named: "刀劍"))
         self.navigationController?.navigationBar.topItem?.titleView = topImage
         colorView.layer.borderWidth = 1
@@ -100,6 +102,27 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         defenseConst.constant = 0
        attackConst.constant = 0
         startConst.constant = 0
+        //檢查網路連線
+        let connect = CheckInternet.isConnectedToNetwork()
+        if
+            connect == false
+        {
+            let alertController = UIAlertController(title: "網路連線問題", message: "請確認是否連上網路", preferredStyle: .Alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                NSLog("OK Pressed")
+            }
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            
+            // Present the controller
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        else
+        {
         currentUser = PFUser.currentUser()
         if currentUser == nil
         {
@@ -108,6 +131,7 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         else
         {
         checkUserSet()
+        }
         }
         adView.adUnitID = "ca-app-pub-2545255102687972/6493325241"
         adView.rootViewController = self
@@ -136,6 +160,10 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                         UIAlertAction in
                         NSLog("OK Pressed")
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("AgreeViewController")
+                as! AgreeViewController
+            controller.controller = self as UIViewController
+            self.presentViewController(controller, animated: true, completion: nil)
                     }
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -166,6 +194,13 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
+    @objc func takePublicPermissions(notification: NSNotification){
+        let publicPermissions = notification.userInfo!["public"] as! Bool
+        userRankObject!["public"] = publicPermissions
+        userRankObject!.saveEventually()
+        
+    }
+
     @IBAction func start(sender: UIButton) {
         //取得形容詞與角色
         pickerRoleData.removeAll();
@@ -337,51 +372,59 @@ class HomeViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
 
     };
     func login()  {
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile", "email", "user_friends"]) {
-            (user: PFUser?, error: NSError?) -> Void in
-            if let user = user {
-                if user.isNew {
-                    FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"name,picture"]).startWithCompletionHandler({
-                        (connection,result, error: NSError!) -> Void in
-                        if error == nil {
-//                            NSLog("%@",result)
-                            print(result)
-                            user["nickname"] = result["name"]
-                            user["photo"] = result["picture"]!!["data"]!!["url"]!
-                            user.saveEventually()
-                            self.teachMode = "Y"
-                            let teachController = (self.storyboard?.instantiateViewControllerWithIdentifier("Teach1"))! as UIViewController
-                            self.presentViewController(teachController, animated: true, completion: nil)
-                        }
-                    })
-                    let gameScore = PFObject(className:"Rank")
-                    gameScore["score"]  = 0
-                    gameScore["win"]  = 0
-                    gameScore["lose"]  = 0
-                    gameScore["user"] = user
-                    gameScore.saveEventually()
-                    self.totalScore.text = "0"
-                    print("User signed up and logged in through Facebook!")
-                }
-                else {
-                    print("User logged in through Facebook!")
-                    let query = PFQuery(className: "Rank")
-                    query.whereKey("user", equalTo: user)
-                    do {
-                       let userScoreData = try query.getFirstObject();
-                        self.totalScore.text = userScoreData["score"] as? String
-                    } catch _ {
-                        self.totalScore.text = ""
-                    }
-
-                }
-            self.checkUserSet()
-            self.loginStatus = "YES"
-            }
-            else {
-            self.loginStatus = "NO"
-            }
-        }
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController")
+            as! LoginViewController
+        controller.homeController = self as HomeViewController
+        self.presentViewController(controller, animated: true, completion: nil)
+//        PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile"]) {
+//            (user: PFUser?, error: NSError?) -> Void in
+//            if let user = user {
+//                if user.isNew {
+//                    FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"name,picture"]).startWithCompletionHandler({
+//                        (connection,result, error: NSError!) -> Void in
+//                        if error == nil {
+////                            NSLog("%@",result)
+//                            print(result)
+//                            user["nickname"] = result["name"]
+//                            user["photo"] = result["picture"]!!["data"]!!["url"]!
+//                            user["rolecount"] = 3
+//                            user.saveEventually()
+//                            self.teachMode = "Y"
+//                            let teachController = (self.storyboard?.instantiateViewControllerWithIdentifier("Teach1"))! as UIViewController
+//                            self.presentViewController(teachController, animated: true, completion: nil)
+//                        }
+//                    })
+//                    let gameScore = PFObject(className:"Rank")
+//                    self.userRankObject = gameScore
+//                    gameScore["score"]  = 0
+//                    gameScore["win"]  = 0
+//                    gameScore["lose"]  = 0
+//                    gameScore["winrate"] = 0
+//                    gameScore["user"] = user
+//                    gameScore["public"] = false
+//                    gameScore.saveEventually()
+//                    self.totalScore.text = "0"
+//                    print("User signed up and logged in through Facebook!")
+//                }
+//                else {
+//                    print("User logged in through Facebook!")
+//                    let query = PFQuery(className: "Rank")
+//                    query.whereKey("user", equalTo: user)
+//                    do {
+//                       let userScoreData = try query.getFirstObject();
+//                        self.totalScore.text = userScoreData["score"] as? String
+//                    } catch _ {
+//                        self.totalScore.text = ""
+//                    }
+//
+//                }
+//            self.checkUserSet()
+//            self.loginStatus = "YES"
+//            }
+//            else {
+//            self.loginStatus = "NO"
+//            }
+//        }
        }
 
    static func getBattleValue(appeCount:Int,roleCount:Int,lucknumber:Int,roleArray:[RoleSetting],appearray:[RoleSetting])->(phase:String,battleValue:Int){

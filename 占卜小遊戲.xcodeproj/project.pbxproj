@@ -14,6 +14,10 @@
 		DE20A84E1BF06E7800B7D0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE20A84D1BF06E7800B7D0A3 /* Assets.xcassets */; };
 		DE20A8511BF06E7800B7D0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE20A84F1BF06E7800B7D0A3 /* LaunchScreen.storyboard */; };
 		DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8841F21BF5AEFC00936610 /* RoleSetting.swift */; };
+		DE8A1F041C6B20FD007F6674 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A1F031C6B20FD007F6674 /* CheckInternet.swift */; };
+		DE8A1F061C6DC0AE007F6674 /* AgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A1F051C6DC0AE007F6674 /* AgreeViewController.swift */; };
+		DE8A1F081C71B745007F6674 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A1F071C71B745007F6674 /* NewUserViewController.swift */; };
+		DE8A1F0A1C71B7B0007F6674 /* OldUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8A1F091C71B7B0007F6674 /* OldUserViewController.swift */; };
 		DE9DF2791C351B7300415627 /* RankTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9DF2781C351B7300415627 /* RankTableViewController.swift */; };
 		DE9FE4401C5CECBA00DB72A9 /* TotalRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FE43F1C5CECBA00DB72A9 /* TotalRankViewController.swift */; };
 		DE9FE4421C5CF46900DB72A9 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FE4411C5CF46900DB72A9 /* Rank.swift */; };
@@ -46,6 +50,10 @@
 		DE8841C71BF242F500936610 /* 占卜小遊戲-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "占卜小遊戲-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE8841C81BF242F600936610 /* ParseObjectC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseObjectC.h; sourceTree = "<group>"; };
 		DE8841F21BF5AEFC00936610 /* RoleSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleSetting.swift; sourceTree = "<group>"; };
+		DE8A1F031C6B20FD007F6674 /* CheckInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
+		DE8A1F051C6DC0AE007F6674 /* AgreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreeViewController.swift; sourceTree = "<group>"; };
+		DE8A1F071C71B745007F6674 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewUserViewController.swift; path = ../NewUserViewController.swift; sourceTree = "<group>"; };
+		DE8A1F091C71B7B0007F6674 /* OldUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldUserViewController.swift; sourceTree = "<group>"; };
 		DE9DF2781C351B7300415627 /* RankTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewController.swift; sourceTree = "<group>"; };
 		DE9FE43F1C5CECBA00DB72A9 /* TotalRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalRankViewController.swift; sourceTree = "<group>"; };
 		DE9FE4411C5CF46900DB72A9 /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -108,8 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				DE20A8461BF06E7800B7D0A3 /* AppDelegate.swift */,
+				DE8A1F071C71B745007F6674 /* NewUserViewController.swift */,
 				DE20A8481BF06E7800B7D0A3 /* HomeViewController.swift */,
 				DE20A84A1BF06E7800B7D0A3 /* Main.storyboard */,
+				DE8A1F091C71B7B0007F6674 /* OldUserViewController.swift */,
 				DE20A84D1BF06E7800B7D0A3 /* Assets.xcassets */,
 				DE20A84F1BF06E7800B7D0A3 /* LaunchScreen.storyboard */,
 				DE20A8521BF06E7800B7D0A3 /* Info.plist */,
@@ -133,6 +143,8 @@
 				DED932681C5A41940074DA0D /* NovelTableViewController.swift */,
 				DED932701C5A7ED10074DA0D /* NovelContentViewController.swift */,
 				DE9FE43F1C5CECBA00DB72A9 /* TotalRankViewController.swift */,
+				DE8A1F031C6B20FD007F6674 /* CheckInternet.swift */,
+				DE8A1F051C6DC0AE007F6674 /* AgreeViewController.swift */,
 			);
 			path = "占卜小遊戲";
 			sourceTree = "<group>";
@@ -278,10 +290,14 @@
 				DE9DF2791C351B7300415627 /* RankTableViewController.swift in Sources */,
 				DEE5AACC1C16C36A00E47EB5 /* GameData.xcdatamodeld in Sources */,
 				DE8841F31BF5AEFC00936610 /* RoleSetting.swift in Sources */,
+				DE8A1F081C71B745007F6674 /* NewUserViewController.swift in Sources */,
+				DE8A1F061C6DC0AE007F6674 /* AgreeViewController.swift in Sources */,
 				DE20A8471BF06E7800B7D0A3 /* AppDelegate.swift in Sources */,
+				DE8A1F041C6B20FD007F6674 /* CheckInternet.swift in Sources */,
 				DEEBA1141C48EB660024493B /* TeachViewController1.swift in Sources */,
 				DE9FE4401C5CECBA00DB72A9 /* TotalRankViewController.swift in Sources */,
 				DED932691C5A41940074DA0D /* NovelTableViewController.swift in Sources */,
+				DE8A1F0A1C71B7B0007F6674 /* OldUserViewController.swift in Sources */,
 				DED9326F1C5A6F9A0074DA0D /* Novel.swift in Sources */,
 				DEE5AACE1C187DA800E47EB5 /* FightViewController.swift in Sources */,
 				DEEBA1181C4E12410024493B /* TestViewController.swift in Sources */,
